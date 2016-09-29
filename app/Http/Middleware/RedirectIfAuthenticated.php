@@ -35,9 +35,9 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next)
     {
         if ($this->auth->check()) {
-            return redirect('/home');
+            return redirect('/admin/dashboard');
         }
-
+        //TODO:: Redirect authenticated user
         return $next($request);
     }
 }

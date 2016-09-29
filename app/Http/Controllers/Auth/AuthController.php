@@ -2,10 +2,17 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Common\Roles;
+use Illuminate\Http\Request;
+use Auth;
+use Input;
+use Hash;
+use Lang;
 use App\User;
+
 use Validator;
 use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+// use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
 class AuthController extends Controller
 {
@@ -20,45 +27,63 @@ class AuthController extends Controller
     |
     */
 
-    use AuthenticatesAndRegistersUsers;
+    // use AuthenticatesAndRegistersUsers;
 
-    /**
-     * Create a new authentication controller instance.
-     *
-     * @return void
-     */
+    protected $redirectPath = '/dashboard';
+
     public function __construct()
     {
         $this->middleware('guest', ['except' => 'getLogout']);
     }
 
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
+    public function getLogin()
     {
-        return Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|confirmed|min:6',
-        ]);
+        return View('auth.login');
     }
 
     /**
-     * Create a new user instance after a valid registration.
+     * Handle a login request to the application.
      *
-     * @param  array  $data
-     * @return User
+     * @param  \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
      */
-    protected function create(array $data)
+    public function postLogin(Request $request)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
+        $this->validate($request, [
+            'email' => 'required', 'password' => 'required',
         ]);
+
+        $credentials = $request->only('email', 'password');
+        $credentials['role_id'] = Roles::ROLE_ADMIN;
+        $user = User::where('email', $credentials['email'])
+            ->where('role_id', $credentials['role_id'])
+            ->first();
+        if ($user && Hash::check($credentials['password'], $user->password)) {
+            Auth::login($user);
+            return redirect()->intended(route('admin.get_home'));
+        }
+        return redirect('admin/auth/login')
+            ->withInput($request->only('email', 'remember'))
+            ->withErrors([
+                'email' => $this->getFailedLoginMessage(),
+            ]);
+    }
+
+    /**
+     * Get the failed login message.
+     *
+     * @return string
+     */
+    protected function getFailedLoginMessage()
+    {
+        return Lang::has('auth.failed')
+            ? Lang::get('auth.failed')
+            : 'These credentials do not match our records.';
+    }
+
+    public function getLogout()
+    {
+        Auth::logout();
+        return redirect(url('/auth/login'));
     }
 }

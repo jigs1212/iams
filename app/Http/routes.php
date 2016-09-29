@@ -15,15 +15,24 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('home', ['middleware' => 'auth', function(){
+Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function () {
+    Route::get('/dashboard', array('as' => 'admin.get_home', 'uses' => 'HomeController@getDashboard'));
+    Route::get('/auth/logout', array('as' => 'admin.get_logout', 'uses' => 'Auth\AuthController@getLogout'));
+    Route::get('/errors/404', array('as' => 'admin.get_404', 'uses' => 'HomeController@get404'));
+});
 
-        return "welcome";
 
-}]);
+// Route::get('dashboard', ['middleware' => 'auth', function(){
+//         return view('pages.dashboard');
+// }]);
 
-Route::get('admin',['middleware' => 'admin', function(){
-    return "Admin";
-}]);
+
+// Route::get('/dashboard', array('as' => 'admin.get_home', 'uses' => 'HomeController@getDashboard'));
+//
+// Route::get('admin',['middleware' => 'admin', function(){
+//     return "Admin";
+// }]);
+
 
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');

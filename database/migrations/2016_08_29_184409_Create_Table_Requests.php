@@ -14,8 +14,8 @@ class CreateTableRequests extends Migration
     {
         Schema::create('requests', function(Blueprint $table){
             $table->increments('id');
-            $table->int('asset_id');
-            $table->int('user_id');
+            $table->integer('asset_id');
+            $table->integer('user_id');
             $table->date('date_to_be_allocated');
             $table->date('date_of_return');
             $table->text('purpose');

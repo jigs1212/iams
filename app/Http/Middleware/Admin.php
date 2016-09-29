@@ -1,10 +1,7 @@
 <?php
-
 namespace App\Http\Middleware;
-
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
-
 class Admin
 {
     /**
@@ -13,7 +10,6 @@ class Admin
      * @var Guard
      */
     protected $auth;
-
     /**
      * Create a new filter instance.
      *
@@ -24,7 +20,6 @@ class Admin
     {
         $this->auth = $auth;
     }
-
     /**
      * Handle an incoming request.
      *
@@ -41,10 +36,10 @@ class Admin
                 return redirect()->guest('auth/login');
             }
         }else{
-            if($this->auth->user()->role_id == 0){
+            if($this->auth->user()->role_id == 1){
                 return $next($request);
             }else{
-                return redirect()->guest('home');
+                return redirect()->admin('dashboard');
             }
         }
     }

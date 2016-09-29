@@ -12,11 +12,10 @@ class CreateTableDepartments extends Migration
      */
     public function up()
     {
-        Schema::create('departments',function (Blueprint
-        $table){
-            $table->incrments('id');
+        Schema::create('departments',function (Blueprint $table){
+            $table->increments('id');
             $table->string('name')->unique();
-            $table->int('manager_id');
+            $table->integer('manager_id');
             $table->boolean('status');
             $table->timestamps();
             $table->softDeletes();

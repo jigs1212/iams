@@ -20,7 +20,7 @@ class CreateTableServices extends Migration
             $table->date('date_of_resolved');
             $table->text('Problem_Solution');
             $table->text('remarks');
-            $table->int('registered_by');
+            $table->integer('registered_by');
             $table->enum('choices', array('call_logged', 'call_attended', 'pending_for_spares', 'pending_for_service', 'call_finished'));
             $table->boolean('status');
             $table->timestamps();

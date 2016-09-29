@@ -18,13 +18,13 @@ class CreateTableAssets extends Migration
             $table->text('description');
             $table->text('part_no');
             $table->string('vendor_name');
-            $table->int('quantity');
+            $table->integer('quantity');
             $table->boolean('type');
             $table->string('supplier_name');
             $table->text('bill_no');
-            $table->int('amount');
+            $table->integer('amount');
             $table->date('date_of_purchase');
-            $table->int('warranty_period');
+            $table->integer('warranty_period');
             $table->string('customer_care_numbers');
             $table->string('customer_care_email');
             $table->string('vendor_website_support');

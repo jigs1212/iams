@@ -2,6 +2,9 @@
 /vendor
 /node_modules
 .env
+/bower_components
+.bowerrc
+
 
 # Laravel 4 specific
 bootstrap/compiled.php

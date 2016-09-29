@@ -14,10 +14,10 @@ class CreateTableUserRegistrations extends Migration
     {
         Schema::create('user_registrations', function (Blueprint $table) {
             $table->increments('id');
-            $table->int('user_id');
+            $table->integer('user_id');
             $table->string('first_name');
             $table->string('last_name');
-            $table->int('department_id');
+            $table->integer('department_id');
             $table->boolean('status');
             $table->timestamps();
             $table->softDeletes();

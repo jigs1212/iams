@@ -1,0 +1,29 @@
+{
+  "name": "Inteligent Asset Management System",
+  "description": "IAMS is a Management system for Assets",
+  "main": "gulpfile.js",
+  "authors": [
+    "Jigar Lodaya <jigar.lodaya12@gmail.com>"
+  ],
+  "license": "GPL",
+  "keywords": [
+    "iams",
+    "project",
+    "mca"
+  ],
+  "homepage": "iams.dev",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+],
+"dependencies": {
+    "jquery": "~2.1.4",
+    "bootstrap": "3.3.4",
+    "bootstrap-social": "^5.0.0",
+    "slimScroll": "jquery-slimscroll#^1.3.7"
+  }
+}

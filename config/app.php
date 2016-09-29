@@ -147,6 +147,8 @@ return [
         /*third  party includes*/
         Collective\Html\HtmlServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
+        Caffeinated\Menus\MenusServiceProvider::class,
+        yajra\Datatables\DatatablesServiceProvider::class,
 
     ],
 
@@ -201,6 +203,8 @@ return [
         'Form' => Collective\Html\FormFacade::class,
         'HTML' => Collective\Html\HtmlFacade::class,
         'Flash' => Laracasts\Flash\Flash::class,
+        'Menu' => Caffeinated\Menus\Facades\Menu::class,
+        'Datatables' => yajra\Datatables\Datatables::class,
 
     ],
 
