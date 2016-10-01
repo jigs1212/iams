@@ -16,9 +16,14 @@ Route::get('/', function () {
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function () {
+    Route::get('/', function(){
+        return redirect('/admin/dashboard');
+    });
     Route::get('/dashboard', array('as' => 'admin.get_home', 'uses' => 'AdminHomeController@getAdminDashboard'));
     Route::get('/auth/logout', array('as' => 'admin.get_logout', 'uses' => 'Auth\AuthController@getLogout'));
+    Route::resource('profile', 'ProfileController@getProfile');
     Route::get('/profile', array('as' => 'admin.get_profile', 'uses' => 'ProfileController@getProfile'));
+
 });
 
 //Error routes

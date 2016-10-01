@@ -21,7 +21,7 @@ class ProfileController extends Controller
             ->select('users.id', 'user_name', 'email', 'role_id', 'first_name', 'last_name', 'department_id')
             ->first();
         if($profile){
-            return
+            return view('pages.getProfile')->with('profile',$profile);
         }
     }
     /**
