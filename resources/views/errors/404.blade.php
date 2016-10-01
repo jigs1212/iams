@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title> 503 - {{(config('settings.project-name'))}}</title>
+    <title> 404 - {{(config('settings.project-name'))}}</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
@@ -19,7 +19,7 @@
     {!! HTML::style('/theme/css/themes/all-themes.css')!!}
     @yield('after-styles-end')
 </head>
-<body class="five-zero-zero" data-base-url={{url()}}>
+<body class="four-zero-four" data-base-url={{url()}}>
     <div class="wrapper">
         {{-- @include('theme.layout.header') --}}
         {{-- @include('theme.layout.menu') --}}
@@ -33,9 +33,9 @@
                 </div>
             </div> --}}
             {{-------FLASH MESSAGE ENDS---------}}
-            <div class="five-zero-zero-container">
-                <div class="error-code">503</div>
-                <div class="error-message">Service Unavailable</div>
+            <div class="four-zero-four-container">
+                <div class="error-code">404</div>
+                <div class="error-message">This page doesn't exist</div>
                 <div class="button-place">
                     <a href="{{route('admin.get_home')}}" class="btn btn-default btn-lg waves-effect">GO TO HOMEPAGE</a>
                 </div>

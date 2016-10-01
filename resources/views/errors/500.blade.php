@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title> 503 - {{(config('settings.project-name'))}}</title>
+    <title> 500 - {{(config('settings.project-name'))}}</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
@@ -34,8 +34,8 @@
             </div> --}}
             {{-------FLASH MESSAGE ENDS---------}}
             <div class="five-zero-zero-container">
-                <div class="error-code">503</div>
-                <div class="error-message">Service Unavailable</div>
+                <div class="error-code">500</div>
+                <div class="error-message">Internal Server Error</div>
                 <div class="button-place">
                     <a href="{{route('admin.get_home')}}" class="btn btn-default btn-lg waves-effect">GO TO HOMEPAGE</a>
                 </div>
