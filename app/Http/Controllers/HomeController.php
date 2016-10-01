@@ -11,15 +11,6 @@ namespace App\Http\Controllers;
 
 Class HomeController extends Controller
 {
-    /**Return view of home page
-     *
-     * @return mixed
-     */
-    public function getHome()
-    {
-        return View('pages.home');
-    }
-
     /** Return view of dashboard
      *
      * @return mixed
@@ -35,5 +26,21 @@ Class HomeController extends Controller
     public function get404()
     {
         return View('errors.404');
+    }
+
+    /**Return view of 503 page
+     * @return mixed
+     */
+    public function get503()
+    {
+        return View('errors.503');
+    }
+
+    /**Return view of 500 page
+     * @return mixed
+     */
+    public function get500()
+    {
+        return View('errors.500');
     }
 }
