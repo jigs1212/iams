@@ -1,4 +1,4 @@
-@extends('theme.layout.master')
+@extends('theme.layout.admin.master')
 @section('after-styles-end')
 @section ('title', config('settings.project-name').'|Welcome')
 @endsection

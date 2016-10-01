@@ -16,13 +16,15 @@ Route::get('/', function () {
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function () {
-    Route::get('/dashboard', array('as' => 'admin.get_home', 'uses' => 'HomeController@getDashboard'));
+    Route::get('/dashboard', array('as' => 'admin.get_home', 'uses' => 'AdminHomeController@getAdminDashboard'));
     Route::get('/auth/logout', array('as' => 'admin.get_logout', 'uses' => 'Auth\AuthController@getLogout'));
-    Route::get('/error/404', array('as' => 'admin.get_404', 'uses' => 'HomeController@get404'));
-    Route::get('/error/500', array('as' => 'admin.get_500', 'uses' => 'HomeController@get500'));
-    Route::get('/error/503', array('as' => 'admin.get_503', 'uses' => 'HomeController@get503'));
     Route::get('/profile', array('as' => 'admin.get_profile', 'uses' => 'ProfileController@getProfile'));
 });
+
+//Error routes
+Route::get('/error/404', array('as' => 'get_404', 'uses' => 'ErrorController@get404'));
+Route::get('/error/500', array('as' => 'get_500', 'uses' => 'ErrorController@get500'));
+Route::get('/error/503', array('as' => 'get_503', 'uses' => 'ErrorController@get503'));
 
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');

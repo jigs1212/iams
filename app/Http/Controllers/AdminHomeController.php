@@ -9,15 +9,15 @@
 namespace App\Http\Controllers;
 
 
-Class HomeController extends Controller
+Class AdminHomeController extends Controller
 {
     /** Return view of dashboard
      *
      * @return mixed
      */
-    public function getDashboard()
+    public function getAdminDashboard()
     {
-        return View('pages.dashboard');
+        return View('pages.dashboard_admin');
     }
 
     /**Return view of 404 page
