@@ -34,14 +34,17 @@ class Authenticate
      */
     public function handle($request, Closure $next)
     {
-        if ($this->auth->guest()) {
-            if ($request->ajax()) {
+        if ($this->auth->guest() || (!$this->auth->guest() && $this->auth->user()->role_id != Roles::ROLE_ADMIN)) {
+         if ($request->ajax()) {
                 return response('Unauthorized.', 401);
-            } else {
-                return redirect()->guest('auth/login');
+            }
+         else {
+             if ($this->auth->check()&&$this->auth->user()->role_id != Roles::ROLE_ADMIN) {
+                 return redirect('/home');
+             }
+                return redirect('auth/login');
             }
         }
-
-        return $next($request);
+      return $next($request);
     }
 }

@@ -19,7 +19,7 @@
     {!! HTML::style('/theme/css/themes/all-themes.css')!!}
     @yield('after-styles-end')
 </head>
-<body class="theme-red" data-base-url={{url()}}>
+<body class="theme-blue" data-base-url={{url()}}>
 <div class="wrapper">
     @include('theme.layout.header')
     @include('theme.layout.menu')

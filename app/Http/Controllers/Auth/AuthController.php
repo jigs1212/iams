@@ -55,7 +55,8 @@ class AuthController extends Controller
 
         $credentials = $request->only('email', 'password');
         $credentials['role_id'] = Roles::ROLE_ADMIN;
-        $user = User::where('email', $credentials['email'])
+        $user = User::join('user_registrations', 'user_id', '=','users.id')
+            ->where('email', $credentials['email'])
             ->where('role_id', $credentials['role_id'])
             ->first();
         if ($user && Hash::check($credentials['password'], $user->password)) {
