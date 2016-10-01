@@ -21,18 +21,7 @@
 </head>
 <body class="four-zero-four" data-base-url={{url()}}>
     <div class="wrapper">
-        {{-- @include('theme.layout.header') --}}
-        {{-- @include('theme.layout.menu') --}}
         <div class="content-wrapper">
-            {{----------FLASH MESSAGE-----------}}
-            {{-- <div id="flash-message-container" class="flat">
-                <div class="row">
-                    <div class="col-sm-12">
-                        @include('vendor.flash.message')
-                    </div>
-                </div>
-            </div> --}}
-            {{-------FLASH MESSAGE ENDS---------}}
             <div class="four-zero-four-container">
                 <div class="error-code">404</div>
                 <div class="error-message">This page doesn't exist</div>
@@ -41,7 +30,6 @@
                 </div>
             </div>
         </div>
-        @include('theme.layout.footer')
     </div>
 <!-- bower:js -->
 <script src="{{ url('/theme/bower-components/jquery/dist/jquery.js') }}"></script>
