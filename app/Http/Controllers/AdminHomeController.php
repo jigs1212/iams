@@ -17,7 +17,16 @@ Class AdminHomeController extends Controller
      */
     public function getAdminDashboard()
     {
-        return View('pages.dashboard_admin');
+        return View('pages.admin.dashboard');
+    }
+
+    /** Return view of Profile
+     *
+     * @return mixed
+     */
+    public function getAdminProfile()
+    {
+        return View('pages.admin.getProfile');
     }
 
     /**Return view of 404 page
