@@ -1,4 +1,7 @@
-@extends('theme.layout.admin.master') @section('after-styles-end') @section ('title', config('settings.project-name').'|Welcome') @endsection @section('content')
+@extends('theme.layout.admin.master')
+@section('after-styles-end')
+@section ('title', config('settings.project-name').'|Welcome')
+@endsection @section('content')
 <!-- Main content -->
 <section class="content">
     <ol class="breadcrumb breadcrumb-bg-light-blue align-right">
