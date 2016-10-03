@@ -4,6 +4,7 @@ php:
     # - "5.3"
 before_script:
     - composer install
+    - npm -g install npm@next
     - npm install
     - bower install
 script: phpunit --configuration phpunit.xml --coverage-text
