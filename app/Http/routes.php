@@ -24,6 +24,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function () {
     Route::resource('profile', 'ProfileController@getProfile');
     Route::get('/profile', array('as' => 'admin.get_profile', 'uses' => 'ProfileController@getProfile'));
 
+    Route::resource('/user','UserController');
+    Route::get('/user',array('as' => 'admin.user', 'uses' => 'UserController@index'));
+    Route::get('/user/deactivate/{id}','UserController@deactivateUser');
+    Route::get('/user/activate/{id}','UserController@activateUser');
+
 });
 
 //Error routes

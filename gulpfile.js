@@ -43,5 +43,21 @@ gulp.task('bower', function () {
             }
         }))
         .pipe(gulp.dest('./resources/views/theme/layout'))
+    gulp.src(['./resources/views/theme/layout/admin/master.blade.php'])
+        .pipe(wiredep({
+            ignorePath: '../../../../../public',
+            onFileUpdated: function(filePath){
+                console.log(chalk.red.bold("Updated: ") + chalk.black(filePath));
+            },
+            fileTypes: {
+                php: {
+                    replace: {
+                        js: '<script src="{{ url(\'{{filePath}}\') }}"></script>',
+                        css: '<link rel="stylesheet" href="{{ url(\'{{filePath}}\') }}" />'
+                    }
+                }
+            }
+        }))
+        .pipe(gulp.dest('./resources/views/theme/layout/admin'))
 });
 

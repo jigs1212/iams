@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="{{ url('/theme/bower-components/bootstrap/dist/css/bootstrap.css') }}" />
     <link rel="stylesheet" href="{{ url('/theme/bower-components/bootstrap-social/bootstrap-social.css') }}" />
     <!-- endbower -->
+    {!! HTML::style('/theme/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css') !!}
+    {!! HTML::style('/theme/plugins/bootstrap-select/css/bootstrap-select.css') !!}
     {!! HTML::style('/theme/plugins/node-waves/waves.css') !!}
     {!! HTML::style('/theme/plugins/animate-css/animate.css') !!}
     {!! HTML::style('/theme/plugins/material-design-preloader/md-preloader.css') !!}
@@ -24,16 +26,18 @@
     @include('theme.layout.admin.header')
     @include('theme.layout.admin.menu')
     <div class="content-wrapper">
-        {{----------FLASH MESSAGE-----------}}
-        {{-- <div id="flash-message-container" class="flat">
-            <div class="row">
-                <div class="col-sm-12">
-                    @include('vendor.flash.message')
+        <section class="content">
+            {{----------FLASH MESSAGE-----------}}
+            <div id="flash-message-container" class="flat">
+                <div class="row">
+                    <div class="col-sm-12">
+                        @include('vendor.flash.message')
+                    </div>
                 </div>
             </div>
-        </div> --}}
-        {{-------FLASH MESSAGE ENDS---------}}
-        @yield('content')
+            {{-------FLASH MESSAGE ENDS---------}}
+            @yield('content')
+        </section>
     </div>
     @include('theme.layout.admin.footer')
 </div>
@@ -43,6 +47,9 @@
 <script src="{{ url('/theme/bower-components/slimScroll/jquery.slimscroll.js') }}"></script>
 <script src="{{ url('/theme/bower-components/slimScroll/jquery.slimscroll.min.js') }}"></script>
 <!-- endbower -->
+{!! HTML::script('/theme/plugins/jquery-datatable/jquery.dataTables.js') !!}
+{!! HTML::script('/theme/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js') !!}
+{!! HTML::script('/theme/plugins/bootstrap-select/js/bootstrap-select.js') !!}
 {!! HTML::script('/theme/plugins/node-waves/waves.js') !!}
 {!! HTML::script('/theme/plugins/jquery-countto/jquery.countTo.js')!!}
 {!! HTML::script('/theme/plugins/raphael/raphael.min.js') !!}
@@ -56,7 +63,8 @@
 {!! HTML::script('/theme/plugins/jquery-sparkline/jquery.sparkline.js') !!}
 {!! HTML::script('/theme/js/admin.js') !!}
 {!! HTML::script('/theme/js/pages/index.js') !!}
-{!! HTML::script('/theme/js/demo.js') !!}
+{{-- {!! HTML::script('/theme/js/demo.js') !!} --}}
+{!! HTML::script('/theme/js/jquery-migrate-1.4.1.min.js') !!}
 @stack('footer.script')
 </body>
 </html>

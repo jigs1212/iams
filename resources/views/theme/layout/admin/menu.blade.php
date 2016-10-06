@@ -26,23 +26,22 @@
             <ul class="list">
                 <li class="header">MAIN NAVIGATION</li>
                 <li>
-                    <a href="javascript:void(0);" class="menu-toggle">
+                    <a href="{{ route('admin.get_home') }}">
+                        <i class="material-icons">dashboard</i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url('admin/user/create') }}">
+                        <i class="material-icons">person_add</i>
+                        <span>User registration</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url('admin/user') }}">
                         <i class="material-icons">people</i>
                         <span>User Management</span>
                     </a>
-                    <ul class="ml-menu">
-                        <li>
-                            <a href="#">
-                                <span>Add User</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" >
-                                <i class="material-icons">settings_input_antenna</i>
-                                <span>Manage User</span>
-                            </a>
-                        </li>
-                    </ul>
                 </li>
                 <li>
                     <a href="javascript:void(0);" class="menu-toggle">
@@ -51,13 +50,13 @@
                     </a>
                     <ul class="ml-menu">
                         <li>
-                            <a href="pages/widgets/cards/basic.html">
+                            <a href="#">
                                 <i class="material-icons">library_add</i>
                                 <span>Add Asset</span>
                             </a>
                         </li>
                         <li>
-                            <a href="pages/widgets/cards/colored.html">
+                            <a href="#">
                                 <i class="material-icons">settings_input_antenna</i>
                                 <span>Manage Asset</span>
                             </a>
@@ -77,13 +76,13 @@
                     </a>
                     <ul class="ml-menu">
                         <li>
-                            <a href="pages/widgets/cards/basic.html">
+                            <a href="#">
                                 <i class="material-icons">local_phone</i>
                                 <span>Request Service</span>
                             </a>
                         </li>
                         <li>
-                            <a href="pages/widgets/cards/colored.html">
+                            <a href="#">
                                 <i class="material-icons">settings_input_antenna</i>
                                 <span>Manage Service</span>
                             </a>

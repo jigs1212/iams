@@ -3,10 +3,6 @@
 @section ('title', config('settings.project-name').'|Welcome')
 @endsection @section('content')
 <!-- Main content -->
-<section class="content">
-    <ol class="breadcrumb breadcrumb-bg-light-blue align-right">
-        <li><a href="javascript:void(0);"><i class="material-icons">home</i> Home</a></li>
-    </ol>
     <div class="container-fluid">
         <div class="block-header">
             <h2>DASHBOARD</h2>
@@ -21,7 +17,7 @@
                     </div>
                     <div class="content">
                         <div class="text">TOTAL ASSETS</div>
-                        <div class="number count-to" data-from="0" data-to="125" data-speed="15" data-fresh-interval="20"></div>
+                        <div class="number count-to" data-from="0" data-to="0" data-speed="15" data-fresh-interval="20"></div>
                     </div>
                 </div>
             </div>
@@ -32,7 +28,7 @@
                     </div>
                     <div class="content">
                         <div class="text">NEW REQUESTS</div>
-                        <div class="number count-to" data-from="0" data-to="257" data-speed="1000" data-fresh-interval="20"></div>
+                        <div class="number count-to" data-from="0" data-to="0" data-speed="1000" data-fresh-interval="20"></div>
                     </div>
                 </div>
             </div>
@@ -43,7 +39,7 @@
                     </div>
                     <div class="content">
                         <div class="text">SERVICES</div>
-                        <div class="number count-to" data-from="0" data-to="243" data-speed="1000" data-fresh-interval="20"></div>
+                        <div class="number count-to" data-from="0" data-to="0" data-speed="1000" data-fresh-interval="20"></div>
                     </div>
                 </div>
             </div>
@@ -54,14 +50,14 @@
                     </div>
                     <div class="content">
                         <div class="text">EMPLOYEES</div>
-                        <div class="number count-to" data-from="0" data-to="1225" data-speed="1000" data-fresh-interval="20"></div>
+                        <div class="number count-to" data-from="0" data-to="2" data-speed="1000" data-fresh-interval="20"></div>
                     </div>
                 </div>
             </div>
         </div>
         <!-- #END# Widgets -->
 
-        <div class="row clearfix">
+        {{-- <div class="row clearfix">
             <!-- Task Info -->
             <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
                 <div class="card">
@@ -157,8 +153,7 @@
                 </div>
             </div>
             <!-- #END# Task Info -->
-        </div>
+        </div> --}}
     </div>
-</section>
 <!-- /.content -->
 @endsection @section('after-scripts-end') @endsection

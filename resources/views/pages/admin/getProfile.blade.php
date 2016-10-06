@@ -4,7 +4,6 @@
 @endsection
 @section('content')
 <!-- Main content -->
-<section class="content">
     <ol class="breadcrumb breadcrumb-bg-light-blue align-right">
         <li><a href="javascript:void(0);"><i class="material-icons">home</i> Home</a></li>
         <li><a href="javascript:void(0);"><i class="material-icons">person</i> Profile</a></li>
@@ -244,7 +243,6 @@
             </div>
         </div>
     </div>
-</section>
 <!-- /.content -->
 @endsection
 @section('after-scripts-end')

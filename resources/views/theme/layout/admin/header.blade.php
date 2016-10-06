@@ -33,7 +33,7 @@
             <div class="navbar-header">
                 <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
                 <a href="javascript:void(0);" class="bars"></a>
-                <a class="navbar-brand" href="#">IAMS - Intelligent Asset Management System</a>
+                <a class="navbar-brand" href="{{ route('admin.get_home') }}">IAMS - Intelligent Asset Management System</a>
             </div>
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
@@ -44,7 +44,7 @@
                     <li class="dropdown">
                         <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
                             <i class="material-icons">notifications</i>
-                            <span class="label-count">7</span>
+                            <!-- <span class="label-count">7</span> -->
                         </a>
                         <ul class="dropdown-menu">
                             <li class="header">NOTIFICATIONS</li>
@@ -75,7 +75,7 @@
                     <li class="dropdown">
                         <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
                             <i class="material-icons">flag</i>
-                            <span class="label-count">9</span>
+                            <!-- <span class="label-count">9</span> -->
                         </a>
                         <ul class="dropdown-menu">
                             <li class="header">TASKS</li>
@@ -108,3 +108,4 @@
         </div>
     </nav>
     <!-- #Top Bar -->
+</header>
