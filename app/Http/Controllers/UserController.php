@@ -16,6 +16,32 @@ use App\Department;
 
 class UserController extends Controller
 {
+    public function deactivateUser($id)
+    {
+        $user = User::find($id);
+        if ($user) {
+            $user->status = User::DEACTIVE;
+            $user->save();
+            Flash::Success('User Successfully Deactivated');
+            return redirect()->back();
+        } else {
+            Flash::error('Whoops! Something Went Wrong.');
+            return redirect()->back();
+        }
+    }
+    public function activateUser($id)
+    {
+        $user = User::find($id);
+        if ($user) {
+            $user->status = User::ACTIVE;
+            $user->save();
+            Flash::Success('User Successfully Activated');
+            return redirect()->back();
+        } else {
+            Flash::error('Whoops! Something Went Wrong.');
+            return redirect()->back();
+        }
+    }
     /**
      * Display a listing of the resource.
      *
@@ -24,7 +50,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::join('user_registrations', 'user_id', '=', 'users.id')
-            ->select('users.id', 'user_name', 'email', 'role_id', 'first_name', 'last_name', 'department_id')
+            ->select('users.id', 'user_name', 'email', 'role_id', 'first_name', 'last_name', 'department_id', 'users.status')
             ->get();
         return view('pages.admin.user.index')->with('users',$users);
     }
@@ -117,7 +143,13 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $profile = User::join('user_registrations', 'user_id', '=', 'users.id')
+            ->where('users.id', $id)
+            ->select('users.id', 'user_name', 'email', 'role_id', 'first_name', 'last_name', 'department_id')
+            ->first();
+        if($profile){
+            return view('pages.admin.user.getProfile')->with('profile',$profile);
+        }
     }
 
     /**
@@ -151,6 +183,14 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        if ($user) {
+            $user->delete();
+            Flash::success('User Successfully Deleted');
+            return redirect()->back();
+        } else {
+            Flash::error('Whoops! Something Went Wrong');
+            return redirect()->back();
+        }
     }
 }
