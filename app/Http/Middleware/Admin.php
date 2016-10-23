@@ -2,6 +2,8 @@
 namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
+use App\Common\Roles;
+
 class Admin
 {
     /**
@@ -27,20 +29,18 @@ class Admin
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next)
-    {
-        if ($this->auth->guest()) {
-            if ($request->ajax()) {
+     public function handle($request, Closure $next)
+     {
+        if ($this->auth->guest() || (!$this->auth->guest() && $this->auth->user()->role_id != Roles::ROLE_ADMIN)) {
+        if ($request->ajax()) {
                 return response('Unauthorized.', 401);
             } else {
-                return redirect()->guest('auth/login');
+              if ($this->auth->check()&&$this->auth->user()->role_id != Roles::ROLE_ADMIN) {
+                return redirect('admin/dashboard');
             }
-        }else{
-            if($this->auth->user()->role_id == 1){
-                return $next($request);
-            }else{
-                return redirect()->admin('dashboard');
+                return redirect('auth/login');
             }
         }
+        return $next($request);
     }
 }
