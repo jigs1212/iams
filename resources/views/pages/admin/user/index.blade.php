@@ -14,7 +14,8 @@
                 <div class="col-xs-12">
                     <div class="card">
                         <div class="header">
-                            <h2>USER MANAGEMENT</h2>
+                            <h2>USER MANAGEMENT<a href="{{ url('admin/user/create') }}" class="btn btn-xs btn-primary" name="button" style="float:right;"><i class="material-icons">person_add</i></a></h2>
+
                         </div>
                         <div class="body">
 
@@ -25,7 +26,7 @@
                                         <td>First Name</td>
                                         <td>Last Name</td>
                                         <td>Email</td>
-                                        {{-- <td style="width:30%;">View</td> --}}
+                                        <td style="width:20%;">View</td>
                                     </tr>
                                 </thead>
                                 @foreach($users as $key => $user)
@@ -34,17 +35,17 @@
                                     <td>{{ $user->first_name }}</td>
                                     <td>{{ $user->last_name }}</td>
                                     <td>{{ $user->email }}</td>
-                                    {{-- <td>
-                                        <div class="btn-group btn-group-sm">
-                                            <a href="#" class="btn btn-default btn-sm" data-toggle="tooltip" title="View"> <i class="fa fa-share"></i></a>
-                                            <a href="" sector-id="{{$sector->id}}" class="btn btn-default btn-sm sector-delete" data-toggle="tooltip" title="Delete"> <i class="fa fa-trash-o"></i></a>
-                                            @if ($sector->status == App\Sector::ACTIVE)
-                                                <a href="{{url('admin/sectors/deactivate/'.$sector->id)}}" class="btn btn-default btn-sm" data-toggle="tooltip" title="Deactivate"> <i class="fa fa-ban"></i></a>
+                                    <td>
+                                        <div class="btn-group btn-group-xs">
+                                            <a href="{{url('admin/user/'.$user->id)}}" class="btn btn-default btn-xs" data-toggle="tooltip" title="View"> <i class="material-icons">forward</i></a>
+                                            <a href="{{$user->id}}" user-id="{{$user->id}}" class="btn btn-default btn-xs user-delete" data-toggle="tooltip" title="Delete"> <i class="material-icons">delete</i></a>
+                                            @if ($user->status == App\User::ACTIVE)
+                                                <a href="{{url('admin/user/deactivate/'.$user->id)}}" class="btn btn-default btn-xs" data-toggle="tooltip" title="Deactivate"> <i class="material-icons">check_circle</i></a>
                                             @else
-                                                <a href="{{url('admin/sectors/activate/'.$sector->id)}}" class="btn btn-default btn-sm" data-toggle="tooltip" title="Activate"> <i class="fa fa-check-circle"></i></a>
+                                                <a href="{{url('admin/user/activate/'.$user->id)}}" class="btn btn-default btn-xs" data-toggle="tooltip" title="Activate"> <i class="material-icons">remove_circle</i></a>
                                             @endif
                                         </div>
-                                    </td> --}}
+                                    </td>
                                 </tr>
                                 @endforeach
                             </table>
@@ -93,6 +94,7 @@
         </div>
     </div>
 <!-- /.content -->
+@include('partials.delete-confirm-model')
 @endsection
 @push('footer.script')
 <script type="text/javascript">
@@ -104,10 +106,11 @@
         /**
          * Delete popup for Sector
          */
-        $('#sector-info-table').on('click', '.sector-delete', function(event) {
+        $('#user-info-table').on('click', '.user-delete', function(event) {
             event.preventDefault();
-            var sectorId = $(this).attr('sector-id');
-            var destinationPath = BASE_URL + '/admin/sectors/' + sectorId;
+            var userId = $(this).attr('user-id');
+            var destinationPath = BASE_URL + '/admin/user/' + userId;
+            console.log(destinationPath);
             $('#delete-confirm').attr('action', destinationPath);
             $("#delete-modal").modal('show');
         });

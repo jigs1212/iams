@@ -29,6 +29,52 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function () {
     Route::get('/user/deactivate/{id}','UserController@deactivateUser');
     Route::get('/user/activate/{id}','UserController@activateUser');
 
+    Route::resource('/asset','AssetController');
+    Route::get('/asset',array('as' => 'admin.asset', 'uses' => 'AssetController@index'));
+    Route::get('/asset/deactivate/{id}','AssetController@deactivateAsset');
+    Route::get('/asset/activate/{id}','AssetController@activateAsset');
+
+    Route::resource('/request','RequestController');
+    Route::get('/request',array('as' => 'admin.request', 'uses' => 'RequestController@index'));
+    Route::get('/request/deactivate/{id}','RequestController@deactivateUser');
+    Route::get('/request/activate/{id}','RequestController@activateUser');
+
+    Route::resource('/service','ServiceController');
+    Route::get('/service',array('as' => 'admin.service', 'uses' => 'ServiceController@index'));
+    Route::get('/service/deactivate/{id}','ServiceController@deactivateUser');
+    Route::get('/service/activate/{id}','ServiceController@activateUser');
+
+});
+
+Route::group(['prefix' => 'assetManager', 'middleware' => ['assetmanager']], function () {
+    Route::get('/', function(){
+        return redirect('/assetManager/dashboard');
+    });
+    Route::get('/dashboard', array('as' => 'asset_manager.get_home', 'uses' => 'AssetManagerHomeController@getAssetManagerDashboard'));
+    Route::get('/auth/logout', array('as' => 'asset_manager.get_logout', 'uses' => 'Auth\AuthController@getLogout'));
+    // Route::resource('profile', 'ProfileController@getProfile');
+    // Route::get('/profile', array('as' => 'admin.get_profile', 'uses' => 'ProfileController@getProfile'));
+
+    // Route::resource('/user','UserController');
+    // Route::get('/user',array('as' => 'admin.user', 'uses' => 'UserController@index'));
+    // Route::get('/user/deactivate/{id}','UserController@deactivateUser');
+    // Route::get('/user/activate/{id}','UserController@activateUser');
+    //
+    // Route::resource('/asset','AssetController');
+    // Route::get('/asset',array('as' => 'admin.asset', 'uses' => 'AssetController@index'));
+    // Route::get('/asset/deactivate/{id}','AssetController@deactivateAsset');
+    // Route::get('/asset/activate/{id}','AssetController@activateAsset');
+    //
+    // Route::resource('/request','RequestController');
+    // Route::get('/request',array('as' => 'admin.request', 'uses' => 'RequestController@index'));
+    // Route::get('/request/deactivate/{id}','RequestController@deactivateUser');
+    // Route::get('/request/activate/{id}','RequestController@activateUser');
+    //
+    // Route::resource('/service','ServiceController');
+    // Route::get('/service',array('as' => 'admin.service', 'uses' => 'ServiceController@index'));
+    // Route::get('/service/deactivate/{id}','ServiceController@deactivateUser');
+    // Route::get('/service/activate/{id}','ServiceController@activateUser');
+
 });
 
 //Error routes

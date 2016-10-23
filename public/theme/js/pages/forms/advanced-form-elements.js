@@ -1,19 +1,19 @@
 $(function () {
-    $('.colorpicker').colorpicker();
-
-    //Dropzone
-    Dropzone.options.frmFileUpload = {
-        paramName: "file",
-        maxFilesize: 2
-    };
+    // $('.colorpicker').colorpicker();
+    //
+    // //Dropzone
+    // Dropzone.options.frmFileUpload = {
+    //     paramName: "file",
+    //     maxFilesize: 2
+    // };
 
     //Masked Input ============================================================================================================================
     var $demoMaskedInput = $('.demo-masked-input');
 
     //Date
-    $demoMaskedInput.find('.date').inputmask('dd/mm/yyyy', { placeholder: '__/__/____' });
+    $('.date').inputmask('dd/mm/yyyy', { placeholder: '__/__/____' });
 
-    //Time
+/*    //Time
     $demoMaskedInput.find('.time12').inputmask('hh:mm t', { placeholder: '__:__ _m', alias: 'time12', hourFormat: '12' });
     $demoMaskedInput.find('.time24').inputmask('hh:mm', { placeholder: '__:__ _m', alias: 'time24', hourFormat: '24' });
 
@@ -70,6 +70,7 @@ $(function () {
         }
     });
     getNoUISliderValue(rangeSlider, false);
+    */
 });
 
 //Get noUISlider Value and write on

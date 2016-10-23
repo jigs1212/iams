@@ -18,6 +18,7 @@
     {!! HTML::style('/theme/plugins/material-design-preloader/md-preloader.css') !!}
     {!! HTML::style('/theme/plugins/morrisjs/morris.css') !!}
     {!! HTML::style('/theme/css/style.css') !!}
+    {!! HTML::style('/theme/css/main.css') !!}
     {!! HTML::style('/theme/css/themes/all-themes.css')!!}
     @yield('after-styles-end')
 </head>
@@ -52,17 +53,23 @@
 {!! HTML::script('/theme/plugins/bootstrap-select/js/bootstrap-select.js') !!}
 {!! HTML::script('/theme/plugins/node-waves/waves.js') !!}
 {!! HTML::script('/theme/plugins/jquery-countto/jquery.countTo.js')!!}
-{!! HTML::script('/theme/plugins/raphael/raphael.min.js') !!}
-{!! HTML::script('/theme/plugins/morrisjs/morris.js') !!}
-{!! HTML::script('/theme/plugins/chartjs/Chart.bundle.js') !!}
-{!! HTML::script('/theme/plugins/flot-charts/jquery.flot.js') !!}
-{!! HTML::script('/theme/plugins/flot-charts/jquery.flot.resize.js') !!}
-{!! HTML::script('/theme/plugins/flot-charts/jquery.flot.pie.js') !!}
-{!! HTML::script('/theme/plugins/flot-charts/jquery.flot.categories.js') !!}
-{!! HTML::script('/theme/plugins/flot-charts/jquery.flot.time.js') !!}
-{!! HTML::script('/theme/plugins/jquery-sparkline/jquery.sparkline.js') !!}
+{{-- {!! HTML::script('/theme/plugins/raphael/raphael.min.js') !!} --}}
+{{-- {!! HTML::script('/theme/plugins/morrisjs/morris.js') !!} --}}
+{{-- {!! HTML::script('/theme/plugins/chartjs/Chart.bundle.js') !!} --}}
+{{-- {!! HTML::script('/theme/plugins/flot-charts/jquery.flot.js') !!} --}}
+{{-- {!! HTML::script('/theme/plugins/flot-charts/jquery.flot.resize.js') !!} --}}
+{{-- {!! HTML::script('/theme/plugins/flot-charts/jquery.flot.pie.js') !!} --}}
+{{-- {!! HTML::script('/theme/plugins/flot-charts/jquery.flot.categories.js') !!} --}}
+{{-- {!! HTML::script('/theme/plugins/flot-charts/jquery.flot.time.js') !!} --}}
+{{-- {!! HTML::script('/theme/plugins/jquery-sparkline/jquery.sparkline.js') !!} --}} --}}
+{!! HTML::script('/theme/plugins/jquery-inputmask/jquery.inputmask.bundle.js') !!}
+{{-- {!! HTML::script('/theme/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js') !!} --}}
+{{-- {!! HTML::script('/theme/plugins/dropzone/dropzone.js') !!} --}}
+{{-- {!! HTML::script('/theme/plugins/multi-select/js/jquery.multi-select.js') !!} --}}
+{{-- {!! HTML::script('/theme/plugins/nouislider/nouislider.js') !!} --}}
 {!! HTML::script('/theme/js/admin.js') !!}
 {!! HTML::script('/theme/js/pages/index.js') !!}
+{!! HTML::script('/theme/js/pages/forms/advanced-form-elements.js') !!}
 {{-- {!! HTML::script('/theme/js/demo.js') !!} --}}
 {!! HTML::script('/theme/js/jquery-migrate-1.4.1.min.js') !!}
 @stack('footer.script')

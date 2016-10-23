@@ -32,12 +32,6 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ url('admin/user/create') }}">
-                        <i class="material-icons">person_add</i>
-                        <span>User registration</span>
-                    </a>
-                </li>
-                <li>
                     <a href="{{ url('admin/user') }}">
                         <i class="material-icons">people</i>
                         <span>User Management</span>
@@ -50,13 +44,13 @@
                     </a>
                     <ul class="ml-menu">
                         <li>
-                            <a href="#">
+                            <a href="{{ url('admin/asset/create') }}">
                                 <i class="material-icons">library_add</i>
                                 <span>Add Asset</span>
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="{{ url('admin/asset') }}">
                                 <i class="material-icons">settings_input_antenna</i>
                                 <span>Manage Asset</span>
                             </a>
@@ -64,31 +58,31 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="javascript:void(0);">
+                    <a href="{{ url('admin/request') }}">
                         <i class="material-icons">layers</i>
                         <span>Request Management</span>
                     </a>
                 </li>
-                <li>
+                {{-- <li>
                     <a href="javascript:void(0);" class="menu-toggle">
                         <i class="material-icons">build</i>
                         <span>Service Management</span>
                     </a>
                     <ul class="ml-menu">
                         <li>
-                            <a href="#">
+                            <a href="{{ url('admin/service/create') }}">
                                 <i class="material-icons">local_phone</i>
                                 <span>Request Service</span>
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="{{ route('admin.service') }}">
                                 <i class="material-icons">settings_input_antenna</i>
                                 <span>Manage Service</span>
                             </a>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
             </ul>
         </div>
         <!-- #Menu -->
