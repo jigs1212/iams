@@ -55,13 +55,28 @@ class AuthController extends Controller
 
         $credentials = $request->only('email', 'password');
         $credentials['role_id'] = Roles::ROLE_ADMIN;
-        $user = User::join('user_registrations', 'user_id', '=','users.id')
-            ->where('email', $credentials['email'])
-            ->where('role_id', $credentials['role_id'])
+        $user = User::where('email', $credentials['email'])
             ->first();
-        if ($user && Hash::check($credentials['password'], $user->password)) {
-            Auth::login($user);
-            return redirect()->intended(route('admin.get_home'));
+        if($user->role_id == Roles::ROLE_ADMIN){
+            if ($user && Hash::check($credentials['password'], $user->password)) {
+                Auth::login($user);
+                return redirect()->intended(route('admin.get_home'));
+            }
+        } else if($user->role_id == Roles::ROLE_ASSET_MANAGER){
+            if ($user && Hash::check($credentials['password'], $user->password)) {
+                Auth::login($user);
+                return redirect()->intended(route('asset_manager.get_home'));
+            }
+        } else if($user->role_id == Roles::ROLE_DEPT_MANAGER){
+            if ($user && Hash::check($credentials['password'], $user->password)) {
+                Auth::login($user);
+                return redirect()->intended(route('dept_manager.get_home'));
+            }
+        } else if($user->role_id == Roles::ROLE_USER){
+            if ($user && Hash::check($credentials['password'], $user->password)) {
+                Auth::login($user);
+                return redirect()->intended(route('user.get_home'));
+            }
         }
         return redirect('admin/auth/login')
             ->withInput($request->only('email', 'remember'))
@@ -69,6 +84,7 @@ class AuthController extends Controller
                 'email' => $this->getFailedLoginMessage(),
             ]);
     }
+
 
     /**
      * Get the failed login message.
@@ -85,6 +101,6 @@ class AuthController extends Controller
     public function getLogout()
     {
         Auth::logout();
-        return redirect(url('/auth/login'));
+        return redirect(url('auth/login'));
     }
 }
