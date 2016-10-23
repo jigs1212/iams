@@ -1,13 +1,10 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: hasna
- * Date: 21/12/15
- * Time: 3:28 PM
- */
 
 namespace App\Http\Controllers;
 
+use App\Asset;
+use App\User;
+use DB;
 
 Class AdminHomeController extends Controller
 {
@@ -17,7 +14,17 @@ Class AdminHomeController extends Controller
      */
     public function getAdminDashboard()
     {
-        return View('pages.admin.dashboard');
+        $asset = Asset::select(DB::raw('count(*) as asset_count'))
+                    ->where('status','=', '1' )
+                    ->get();
+        $asset_count = $asset[0]->asset_count;
+        $user = User::select(DB::raw('count(*) as user_count'))
+                    ->where('status','=','1')
+                    ->get();
+        $user_count = $user[0]->user_count;
+        return View('pages.admin.dashboard')
+            ->with('asset_count',$asset_count)
+            ->with('user_count',$user_count);
     }
 
     /** Return view of Profile
