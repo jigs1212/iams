@@ -1,8 +1,9 @@
-@extends('theme.layout.admin.master')
+@extends('theme.layout.asset-manager.master')
 @section('after-styles-end')
 <?php $titleName = 'Add Asset'; ?>
 @section ('title', $titleName . ' | ' .config('settings.project-name-short'))
-@endsection @section('content')
+@endsection
+@section('content')
 <!-- Main content -->
     <ol class="breadcrumb align-right">
         <li><a href="{{ route('admin.get_home') }}"><i class="material-icons">home</i> Home</a></li>
@@ -17,7 +18,7 @@
                         <h2>ASSET REGISTRATION</h2>
                     </div>
                     <div class="body">
-                        {!! Form::open(array('url'=>'admin/asset','class'=>'form-horizontal','method' => 'POST','id'=>'add-form')) !!}
+                        {!! Form::open(array('url'=>'assetManager/asset','class'=>'form-horizontal','method' => 'POST','id'=>'add-form')) !!}
                             <div class="row clearfix">
                                 <div class="col-lg-3 col-md-3 col-sm-5 col-xs-6 form-control-label">
                                     {!! Form::label('', 'Name')!!}

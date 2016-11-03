@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Auth;
 
 class RequestController extends Controller
 {
@@ -16,7 +17,24 @@ class RequestController extends Controller
      */
     public function index()
     {
-        return view('pages.admin.request.index');
+        $userRoleId = Auth::user()->role_id;
+        switch ($userRoleId) {
+            case '1':
+                return view('pages.admin.request.index');
+                break;
+            case '2':
+                return view('pages.asset-manager.request.index');
+                break;
+            case '3':
+                return view('pages.admin.request.index');
+                break;
+            case '4':
+                return view('pages.admin.request.index');
+                break;
+            default:
+                # code...
+                break;
+        }
     }
 
     /**

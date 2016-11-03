@@ -1,11 +1,9 @@
-@extends('theme.layout.admin.master')
+@extends('theme.layout.asset-manager.master')
 @section('after-styles-end')
 <?php $titleName = 'Dashboard'; ?>
-@section ('title', $titleName . ' | ' . config('settings.project-name-short'))
-@endsection
-@section('content')
+@section ('title', $titleName . ' | ' .config('settings.project-name-short'))
+@endsection @section('content')
 <!-- Main content -->
-
     <div class="container-fluid">
         <div class="block-header">
             <h2>DASHBOARD</h2>

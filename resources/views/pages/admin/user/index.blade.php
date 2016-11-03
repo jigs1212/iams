@@ -1,6 +1,7 @@
 @extends('theme.layout.admin.master')
 @section('after-styles-end')
-@section ('title', config('settings.project-name-short').'| User Registraion')
+<?php $titleName = 'User Management'; ?>
+@section ('title', $titleName . ' | '. config('settings.project-name-short'))
 @endsection
 @section('content')
 <!-- Main content -->

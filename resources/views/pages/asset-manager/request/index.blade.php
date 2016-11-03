@@ -1,4 +1,4 @@
-@extends('theme.layout.admin.master')
+@extends('theme.layout.asset-manager.master')
 @section('after-styles-end')
 <?php $titleName = 'Request Management'; ?>
 @section ('title', $titleName . ' | ' .config('settings.project-name-short'))
@@ -6,8 +6,8 @@
 @section('content')
 <!-- Main content -->
     <ol class="breadcrumb align-right">
-        <li><a href="{{ route('admin.get_home') }}"><i class="material-icons">home</i> Home</a></li>
-        <li><a href="{{ route('admin.asset') }}"><i class="material-icons">layers</i> Request Management</a></li>
+        <li><a href="{{ route('asset_manager.get_home') }}"><i class="material-icons">home</i> Home</a></li>
+        <li><a href="{{ route('asset_manager.asset') }}"><i class="material-icons">layers</i> Request Management</a></li>
     </ol>
     <div class="container-fluid">
             <!-- Horizontal Layout -->

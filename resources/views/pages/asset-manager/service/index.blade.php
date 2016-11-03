@@ -1,13 +1,12 @@
 @extends('theme.layout.admin.master')
 @section('after-styles-end')
-<?php $titleName = 'Request Management'; ?>
-@section ('title', $titleName . ' | ' .config('settings.project-name-short'))
+@section ('title', config('settings.project-name-short').'| Service Mangement')
 @endsection
 @section('content')
 <!-- Main content -->
     <ol class="breadcrumb align-right">
         <li><a href="{{ route('admin.get_home') }}"><i class="material-icons">home</i> Home</a></li>
-        <li><a href="{{ route('admin.asset') }}"><i class="material-icons">layers</i> Request Management</a></li>
+        <li><a href="{{ route('admin.asset') }}"><i class="material-icons">build</i> Service Management</a></li>
     </ol>
     <div class="container-fluid">
             <!-- Horizontal Layout -->
@@ -15,7 +14,7 @@
                 <div class="col-xs-12">
                     <div class="card">
                         <div class="header">
-                            <h2>REQUEST MANAGEMENT</h2>
+                            <h2>SERVICE MANAGEMENT</h2>
                         </div>
                         <div class="body">
 
@@ -24,8 +23,10 @@
                                     <tr>
                                         <td style="width:10%;">Sl No</td>
                                         <td>Asset Name</td>
-                                        <td>Requester Name</td>
-                                        <td>Date of Requirement</td>
+                                        <td>Service Description</td>
+                                        <td>Date of call recoreded</td>
+                                        <td>Date of call solved</td>
+                                        <td>Solution</td>
                                         {{-- <td style="width:30%;">View</td> --}}
                                     </tr>
                                 </thead>

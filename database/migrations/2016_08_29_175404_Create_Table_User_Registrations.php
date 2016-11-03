@@ -19,6 +19,8 @@ class CreateTableUserRegistrations extends Migration
             $table->string('last_name');
             $table->integer('department_id');
             $table->boolean('status');
+            $table->integer('added_by_user_id');
+            $table->integer('updated_by_user_id');
             $table->timestamps();
             $table->softDeletes();
         });

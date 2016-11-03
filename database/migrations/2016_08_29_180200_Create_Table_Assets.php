@@ -30,6 +30,8 @@ class CreateTableAssets extends Migration
             $table->string('vendor_website_support');
             $table->date('date_of_end_of_warranty');
             $table->boolean('status');
+            $table->integer('added_by_user_id');
+            $table->integer('updated_by_user_id');
             $table->timestamps();
             $table->softDeletes();
         });

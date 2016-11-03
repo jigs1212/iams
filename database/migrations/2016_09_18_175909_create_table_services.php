@@ -16,13 +16,15 @@ class CreateTableServices extends Migration
             $table->increments('id');
             $table->text('Service_call_no');
             $table->text('Problem');
-            $table->date('date_of_registration');
-            $table->date('date_of_resolved');
+            $table->timestamp('date_of_registration');
+            $table->timestamp('date_of_resolved');
             $table->text('Problem_Solution');
             $table->text('remarks');
-            $table->integer('registered_by');
+            $table->integer('registered_by_user_id');
             $table->enum('choices', array('call_logged', 'call_attended', 'pending_for_spares', 'pending_for_service', 'call_finished'));
             $table->boolean('status');
+            $table->integer('added_by_user_id');
+            $table->integer('updated_by_user_id');
             $table->timestamps();
             $table->softDeletes();
         });

@@ -1,6 +1,7 @@
 @extends('theme.layout.admin.master')
 @section('after-styles-end')
-@section ('title', config('settings.project-name').'|Welcome')
+<?php $titleName = 'View User'; ?>
+@section ('title', $titleName . ' | ' . config('settings.project-name-short'))
 @endsection
 @section('content')
 <!-- Main content -->

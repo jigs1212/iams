@@ -13,9 +13,9 @@
                     <i class="material-icons" data-toggle="dropdown" aria-haspopup="true"
                     aria-expanded="true">keyboard_arrow_down</i>
                     <ul class="dropdown-menu pull-right">
-                        <li><a href="{{route("admin.get_profile")}}"><i class="material-icons">person</i>Profile</a></li>
+                        <li><a href="{{route("asset_manager.get_profile")}}"><i class="material-icons">person</i>Profile</a></li>
                         <li role="seperator" class="divider"></li>
-                        <li><a href="{{route("admin.get_logout")}}"><i class="material-icons">input</i>Sign Out</a></li>
+                        <li><a href="{{route("asset_manager.get_logout")}}"><i class="material-icons">input</i>Sign Out</a></li>
                     </ul>
                 </div>
             </div>
@@ -29,18 +29,9 @@
                 @if($titleName == 'Dashboard')
                     class="active"
                 @endif>
-                    <a href="{{ route('admin.get_home') }}">
+                    <a href="{{ route('asset_manager.get_home') }}">
                         <i class="material-icons">dashboard</i>
                         <span>Dashboard</span>
-                    </a>
-                </li>
-                <li
-                @if($titleName == 'User Management' || $titleName == 'Add User' || $titleName == 'View User')
-                    class="active"
-                @endif>
-                    <a href="{{ url('admin/user') }}">
-                        <i class="material-icons">people</i>
-                        <span>User Management</span>
                     </a>
                 </li>
                 <li
@@ -56,7 +47,7 @@
                         @if($titleName == 'Add Asset')
                             class="active"
                         @endif>
-                            <a href="{{ url('admin/asset/create') }}">
+                            <a href="{{ url('assetManager/asset/create') }}">
                                 <i class="material-icons">library_add</i>
                                 <span>Add Asset</span>
                             </a>
@@ -65,7 +56,7 @@
                         @if($titleName == 'Asset Management')
                             class="active"
                         @endif>
-                            <a href="{{ url('admin/asset') }}">
+                            <a href="{{ url('assetManager/asset') }}">
                                 <i class="material-icons">settings_input_antenna</i>
                                 <span>Manage Asset</span>
                             </a>
@@ -76,7 +67,7 @@
                 @if($titleName == 'Request Management')
                     class="active"
                 @endif>
-                    <a href="{{ url('admin/request') }}">
+                    <a href="{{ url('assetManager/request') }}">
                         <i class="material-icons">layers</i>
                         <span>Request Management</span>
                     </a>
@@ -88,13 +79,13 @@
                     </a>
                     <ul class="ml-menu">
                         <li>
-                            <a href="{{ url('admin/service/create') }}">
+                            <a href="{{ url('assetManager/service/create') }}">
                                 <i class="material-icons">local_phone</i>
                                 <span>Request Service</span>
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('admin.service') }}">
+                            <a href="{{ route('assetManager .service') }}">
                                 <i class="material-icons">settings_input_antenna</i>
                                 <span>Manage Service</span>
                             </a>
@@ -108,7 +99,7 @@
         <div class="legal">
             <div class="copyright">
                 &copy; <?php echo date("Y"); ?>
-                 <a href="{{ route('admin.get_home') }}">IAMS</a>.
+                 <a href="javascript:void(0);">IAMS</a>.
             </div>
             <div class="version">
                 <b>Version: </b> 1.0.0

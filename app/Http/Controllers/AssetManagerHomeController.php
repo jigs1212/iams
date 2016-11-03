@@ -27,7 +27,7 @@ class AssetManagerHomeController extends Controller
                     ->where('status','=','1')
                     ->get();
         $user_count = $user[0]->user_count;
-        return View('pages.admin.dashboard')
+        return View('pages.asset-manager.dashboard')
             ->with('asset_count',$asset_count)
             ->with('user_count',$user_count);
     }
@@ -36,9 +36,9 @@ class AssetManagerHomeController extends Controller
      *
      * @return mixed
      */
-    public function getAdminProfile()
+    public function getAssetManagerProfile()
     {
-        return View('pages.admin.getProfile');
+        return View('pages.asset-manager.getProfile');
     }
 
     /**Return view of 404 page

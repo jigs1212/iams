@@ -15,11 +15,12 @@ class CreateTableAllocations extends Migration
         Schema::create('allocations', function(Blueprint $table){
             $table->increments('id');
             $table->integer('request_id');
-            $table->date('date_of_allotment');
-            $table->date('date_of_return');
+            $table->timestamp('date_of_allotment');
+            $table->timestamp('date_of_return');
             $table->text('remarks');
-            $table->integer('user_id_allocated_by');
+            $table->integer('allocator_user_id');
             $table->boolean('status');
+            $table->integer('updated_by_user_id');
             $table->timestamps();
             $table->softDeletes();
         });

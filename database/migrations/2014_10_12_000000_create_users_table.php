@@ -19,6 +19,8 @@ class CreateUsersTable extends Migration
             $table->string('password', 60);
             $table->integer('role_id');
             $table->boolean('status');
+            $table->integer('added_by_user_id');
+            $table->integer('updated_by_user_id');
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

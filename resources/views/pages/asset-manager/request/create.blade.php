@@ -1,8 +1,9 @@
 @extends('theme.layout.admin.master')
 @section('after-styles-end')
-<?php $titleName = 'Add Asset'; ?>
+<?php $titleName = 'Request Asset'; ?>
 @section ('title', $titleName . ' | ' .config('settings.project-name-short'))
-@endsection @section('content')
+@endsection
+@section('content')
 <!-- Main content -->
     <ol class="breadcrumb align-right">
         <li><a href="{{ route('admin.get_home') }}"><i class="material-icons">home</i> Home</a></li>
@@ -17,12 +18,13 @@
                         <h2>ASSET REGISTRATION</h2>
                     </div>
                     <div class="body">
-                        {!! Form::open(array('url'=>'admin/asset','class'=>'form-horizontal','method' => 'POST','id'=>'add-form')) !!}
+                        {{-- {!! Form::open(array('url'=>'admin/user','class'=>'form-horizontal','method' => 'POST','id'=>'add-form')) !!} --}}
+                        <form class="form-horizontal">
                             <div class="row clearfix">
-                                <div class="col-lg-3 col-md-3 col-sm-5 col-xs-6 form-control-label">
+                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                     {!! Form::label('', 'Name')!!}
                                 </div>
-                                <div class="col-lg-9 col-md-9 col-sm-7 col-xs-6">
+                                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                     <div class="form-group">
                                         <div class="form-line">
                                             {!! Form::text('name','',array('class' => 'form-control','placeholder'=>'[Name of the asset]','id'=>'name'))!!}
@@ -30,10 +32,12 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-3 col-md-3 col-sm-5 col-xs-6 form-control-label">
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                     {!! Form::label('', 'Description')!!}
                                 </div>
-                                <div class="col-lg-9 col-md-9 col-sm-7 col-xs-6">
+                                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                     <div class="form-group">
                                         <div class="form-line">
                                             {!! Form::text('description','',array('class' => 'form-control','placeholder'=>'[Description]','id'=>'description'))!!}
@@ -41,10 +45,12 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-3 col-md-3 col-sm-5 col-xs-6 form-control-label">
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                     {!! Form::label('', 'Part No')!!}
                                 </div>
-                                <div class="col-lg-9 col-md-9 col-sm-7 col-xs-6">
+                                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                     <div class="form-group">
                                         <div class="form-line">
                                             {!! Form::text('part_no','',array('class' => 'form-control','placeholder'=>'[Part No]','id'=>'description'))!!}
@@ -52,10 +58,12 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-3 col-md-3 col-sm-5 col-xs-6 form-control-label">
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                     {!! Form::label('', 'Vendor Name')!!}
                                 </div>
-                                <div class="col-lg-9 col-md-9 col-sm-7 col-xs-6">
+                                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                     <div class="form-group">
                                         <div class="form-line">
                                             {!! Form::text('vendor_name','',array('class' => 'form-control','placeholder'=>'[Vendor Name]','id'=>'description'))!!}
@@ -63,10 +71,12 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-3 col-md-3 col-sm-5 col-xs-6 form-control-label">
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                     {!! Form::label('', 'Quantity')!!}
                                 </div>
-                                <div class="col-lg-9 col-md-9 col-sm-7 col-xs-6">
+                                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                     <div class="form-group">
                                         <div class="form-line">
                                             {!! Form::text('quantity','',array('class' => 'form-control','placeholder'=>'[Quantity]','id'=>'description'))!!}
@@ -74,10 +84,12 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-3 col-md-3 col-sm-5 col-xs-6 form-control-label">
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                     {!! Form::label('', 'Type')!!}
                                 </div>
-                                <div class="col-lg-9 col-md-9 col-sm-7 col-xs-6">
+                                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                     <div class="form-group">
                                         <div class="form-line">
                                             {!! Form::select('type',array('' => '[Select type of asset]'),'',array('class'=>'form-control select-box','id'=>'type')) !!}
@@ -86,10 +98,12 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-3 col-md-3 col-sm-5 col-xs-6 form-control-label">
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                     {!! Form::label('', 'Supplier Name')!!}
                                 </div>
-                                <div class="col-lg-9 col-md-9 col-sm-7 col-xs-6">
+                                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                     <div class="form-group">
                                         <div class="form-line">
                                             {!! Form::text('supplier_name','',array('class' => 'form-control','placeholder'=>'[Supplier Name]','id'=>'supplier_name'))!!}
@@ -97,10 +111,12 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-3 col-md-3 col-sm-5 col-xs-6 form-control-label">
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                     {!! Form::label('', 'Bill No')!!}
                                 </div>
-                                <div class="col-lg-9 col-md-9 col-sm-7 col-xs-6">
+                                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                     <div class="form-group">
                                         <div class="form-line">
                                             {!! Form::text('bill_no','',array('class' => 'form-control','placeholder'=>'[Bill No]','id'=>'bill_no'))!!}
@@ -108,10 +124,12 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-3 col-md-3 col-sm-5 col-xs-6 form-control-label">
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                     {!! Form::label('', 'Amount')!!}
                                 </div>
-                                <div class="col-lg-9 col-md-9 col-sm-7 col-xs-6">
+                                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                     <div class="form-group">
                                         <div class="form-line">
                                             {!! Form::text('amount','',array('class' => 'form-control','placeholder'=>'[Amount]','id'=>'amount'))!!}
@@ -119,21 +137,24 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-3 col-md-3 col-sm-5 col-xs-6 form-control-label">
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                     {!! Form::label('', 'Date of Purchase')!!}
                                 </div>
-                                <div class="col-lg-9 col-md-9 col-sm-7 col-xs-6">
+                                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                     <div class="form-group">
-                                        <div class="form-line">
-                                            {!! Form::text('date_of_purchase','',array('class' => 'form-control date','placeholder'=>'Ex: 30/07/2016','id'=>'date_of_purchase'))!!}
-                                            {!! $errors->first('date_of_purchase', '<div class="text-danger">:message</div>') !!}
+                                        {!! Form::date('date_of_purchase',''); !!}
+                                        {!! $errors->first('date_of_purchase', '<div class="text-danger">:message</div>') !!}
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-3 col-md-3 col-sm-5 col-xs-6 form-control-label">
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                     {!! Form::label('', 'Warranty Period')!!}
                                 </div>
-                                <div class="col-lg-9 col-md-9 col-sm-7 col-xs-6">
+                                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                     <div class="form-group">
                                         <div class="form-line">
                                             {!! Form::text('warranty_period','',array('class' => 'form-control','placeholder'=>'[Warranty Period]','id'=>'warranty_period'))!!}
@@ -141,10 +162,12 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-3 col-md-3 col-sm-5 col-xs-6 form-control-label">
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                     {!! Form::label('', 'Customer Care Number')!!}
                                 </div>
-                                <div class="col-lg-9 col-md-9 col-sm-7 col-xs-6">
+                                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                     <div class="form-group">
                                         <div class="form-line">
                                             {!! Form::text('customer_care_numbers','',array('class' => 'form-control','placeholder'=>'[Customer Care Number]','id'=>'customer_care_numbers'))!!}
@@ -152,10 +175,12 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-3 col-md-3 col-sm-5 col-xs-6 form-control-label">
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                     {!! Form::label('', 'Customer Care Email')!!}
                                 </div>
-                                <div class="col-lg-9 col-md-9 col-sm-7 col-xs-6">
+                                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                     <div class="form-group">
                                         <div class="form-line">
                                             {!! Form::text('customer_care_email','',array('class' => 'form-control','placeholder'=>'[Customer Care Email]','id'=>'customer_care_email'))!!}
@@ -163,10 +188,12 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-3 col-md-3 col-sm-5 col-xs-6 form-control-label">
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                     {!! Form::label('', 'Quantity')!!}
                                 </div>
-                                <div class="col-lg-9 col-md-9 col-sm-7 col-xs-6">
+                                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                     <div class="form-group">
                                         <div class="form-line">
                                             {!! Form::text('quantity','',array('class' => 'form-control','placeholder'=>'[Quantity]','id'=>'description'))!!}
@@ -174,10 +201,12 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-3 col-md-3 col-sm-5 col-xs-6 form-control-label">
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                     {!! Form::label('', 'Vendor Website')!!}
                                 </div>
-                                <div class="col-lg-9 col-md-9 col-sm-7 col-xs-6">
+                                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                     <div class="form-group">
                                         <div class="form-line">
                                             {!! Form::text('vendor_website_support','',array('class' => 'form-control','placeholder'=>'[Vendor Website]','id'=>'vendor_website_support'))!!}
@@ -185,19 +214,22 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-3 col-md-3 col-sm-5 col-xs-6 form-control-label">
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                     {!! Form::label('', 'End of Warranty Date')!!}
                                 </div>
-                                <div class="col-lg-9 col-md-9 col-sm-7 col-xs-6">
+                                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                     <div class="form-group">
-                                        <div class="form-line">
-                                            {!! Form::text('date_of_end_of_warranty','',array('class' => 'form-control date','placeholder'=>'Ex: 30/07/2016','id'=>'date_of_end_of_warranty'))!!}
-                                            {!! $errors->first('date_of_end_of_warranty', '<div class="text-danger">:message</div>') !!}
-                                        </div>
+                                        {!! Form::date('date_of_end_of_warranty', ''); !!}
+                                        {{-- {!! Form::text('date_of_end_of_warranty','',array('class' => 'form-control','placeholder'=>'[End of Warranty Date]','id'=>'date_of_end_of_warranty'))!!} --}}
+                                        {!! $errors->first('date_of_end_of_warranty', '<div class="text-danger">:message</div>') !!}
                                     </div>
                                 </div>
-                                <div class="col-xs-offset-5 col-xs-1 p-t-25 p-b-25">
-                                    {!! Form::submit("Save", array("class" => "btn-lg btn-primary m-t-15 waves-effect btn btn-custom",'id'=>'btn_save')) !!}
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
+                                    {!! Form::submit("Save", array("class" => "btn btn-primary m-t-15 waves-effect",'id'=>'btn_save')) !!}
                                 </div>
                             </div>
                             {!!Form::close()!!}

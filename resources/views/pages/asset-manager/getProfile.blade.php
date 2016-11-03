@@ -1,4 +1,4 @@
-@extends('theme.layout.admin.master')
+@extends('theme.layout.asset-manager.master')
 @section('after-styles-end')
 <?php $titleName = 'Profile'; ?>
 @section ('title', $titleName . ' | ' . config('settings.project-name-short'))
@@ -6,7 +6,7 @@
 @section('content')
 <!-- Main content -->
     <ol class="breadcrumb align-right">
-        <li><a href="{{ route('admin.get_home') }}"><i class="material-icons">home</i> Home</a></li>
+        <li><a href="javascript:void(0);"><i class="material-icons">home</i> Home</a></li>
         <li><a href="javascript:void(0);"><i class="material-icons">person</i> Profile</a></li>
     </ol>
     <div class="container-fluid">

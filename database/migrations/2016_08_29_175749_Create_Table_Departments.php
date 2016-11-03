@@ -17,6 +17,8 @@ class CreateTableDepartments extends Migration
             $table->string('name')->unique();
             $table->integer('manager_id');
             $table->boolean('status');
+            $table->integer('added_by_user_id');
+            $table->integer('updated_by_user_id');
             $table->timestamps();
             $table->softDeletes();
         });

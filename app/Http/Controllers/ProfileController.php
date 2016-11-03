@@ -15,13 +15,29 @@ class ProfileController extends Controller
 {
     public function getProfile()
     {
-        $userId = Auth::user()->id;
+        $user = Auth::user();
+        $userId = $user->id;
+        $userRoleId = $user->role_id;
         $profile = User::join('user_registrations', 'user_id', '=', 'users.id')
             ->where('users.id', $userId)
             ->select('users.id', 'user_name', 'email', 'role_id', 'first_name', 'last_name', 'department_id')
             ->first();
-        if($profile){
-            return view('pages.admin.getProfile')->with('profile',$profile);
+        switch ($userRoleId) {
+            case '1':
+                return view('pages.admin.getProfile')->with('profile',$profile);
+                break;
+            case '2':
+                return view('pages.asset-manager.getProfile')->with('profile',$profile);
+                break;
+            case '3':
+                return view('pages.admin.getProfile')->with('profile',$profile);
+                break;
+            case '4':
+                return view('pages.admin.getProfile')->with('profile',$profile);
+                break;
+            default:
+                # code...
+                break;
         }
     }
     /**

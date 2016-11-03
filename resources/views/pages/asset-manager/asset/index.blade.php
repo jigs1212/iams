@@ -1,13 +1,13 @@
-@extends('theme.layout.admin.master')
+@extends('theme.layout.asset-manager.master')
 @section('after-styles-end')
-<?php $titleName = 'Request Management'; ?>
+<?php $titleName = 'Asset Management'; ?>
 @section ('title', $titleName . ' | ' .config('settings.project-name-short'))
 @endsection
 @section('content')
 <!-- Main content -->
     <ol class="breadcrumb align-right">
-        <li><a href="{{ route('admin.get_home') }}"><i class="material-icons">home</i> Home</a></li>
-        <li><a href="{{ route('admin.asset') }}"><i class="material-icons">layers</i> Request Management</a></li>
+        <li><a href="{{ route('asset_manager.get_home') }}"><i class="material-icons">home</i> Home</a></li>
+        <li><a href="{{ route('asset_manager.asset') }}"><i class="material-icons">people</i> Asset Management</a></li>
     </ol>
     <div class="container-fluid">
             <!-- Horizontal Layout -->
@@ -15,7 +15,7 @@
                 <div class="col-xs-12">
                     <div class="card">
                         <div class="header">
-                            <h2>REQUEST MANAGEMENT</h2>
+                            <h2>Asset MANAGEMENT</h2>
                         </div>
                         <div class="body">
 
@@ -24,30 +24,30 @@
                                     <tr>
                                         <td style="width:10%;">Sl No</td>
                                         <td>Asset Name</td>
-                                        <td>Requester Name</td>
-                                        <td>Date of Requirement</td>
-                                        {{-- <td style="width:30%;">View</td> --}}
+                                        <td>Vendor Name</td>
+                                        <td>Quantity</td>
+                                        <td style="width:30%;">View</td>
                                     </tr>
                                 </thead>
-                                {{-- @foreach($users as $key => $user)
+                                @foreach($assets as $key => $asset)
                                 <tr>
                                     <td>{{ $key+1 }}</td>
-                                    <td>{{ $user->first_name }}</td>
-                                    <td>{{ $user->last_name }}</td>
-                                    <td>{{ $user->email }}</td>
+                                    <td>{{ $asset->name }}</td>
+                                    <td>{{ $asset->vendor_name }}</td>
+                                    <td>{{ $asset->quantity }}</td>
                                     <td>
-                                        <div class="btn-group btn-group-sm">
-                                            <a href="#" class="btn btn-default btn-sm" data-toggle="tooltip" title="View"> <i class="fa fa-share"></i></a>
-                                            <a href="" sector-id="{{$sector->id}}" class="btn btn-default btn-sm sector-delete" data-toggle="tooltip" title="Delete"> <i class="fa fa-trash-o"></i></a>
-                                            @if ($sector->status == App\Sector::ACTIVE)
-                                                <a href="{{url('admin/sectors/deactivate/'.$sector->id)}}" class="btn btn-default btn-sm" data-toggle="tooltip" title="Deactivate"> <i class="fa fa-ban"></i></a>
+                                        <div class="btn-group btn-group-xs">
+                                            <a href="{{url('assetManager/asset/'.$asset->id)}}" class="btn btn-default btn-xs" data-toggle="tooltip" title="View"> <i class="material-icons">forward</i></a>
+                                            <a href="" asset-id="{{$asset->id}}" class="btn btn-default btn-xs asset-delete" data-toggle="tooltip" title="Delete"> <i class="material-icons">delete</i></a>
+                                            @if ($asset->status == App\Asset::ACTIVE)
+                                                <a href="{{url('assetManager/asset/deactivate/'.$asset->id)}}" class="btn btn-default btn-xs" data-toggle="tooltip" title="Deactivate"> <i class="material-icons">check_circle</i></a>
                                             @else
-                                                <a href="{{url('admin/sectors/activate/'.$sector->id)}}" class="btn btn-default btn-sm" data-toggle="tooltip" title="Activate"> <i class="fa fa-check-circle"></i></a>
+                                                <a href="{{url('assetManager/asset/activate/'.$asset->id)}}" class="btn btn-default btn-xs" data-toggle="tooltip" title="Activate"> <i class="material-icons">remove_circle</i></a>
                                             @endif
                                         </div>
                                     </td>
                                 </tr>
-                                @endforeach --}}
+                                @endforeach
                             </table>
                         </div>
                     </div>
@@ -71,7 +71,7 @@
         $('#sector-info-table').on('click', '.sector-delete', function(event) {
             event.preventDefault();
             var sectorId = $(this).attr('sector-id');
-            var destinationPath = BASE_URL + '/admin/sectors/' + sectorId;
+            var destinationPath = BASE_URL + '/assetManager/sectors/' + sectorId;
             $('#delete-confirm').attr('action', destinationPath);
             $("#delete-modal").modal('show');
         });

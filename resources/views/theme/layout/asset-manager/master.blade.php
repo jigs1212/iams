@@ -24,8 +24,8 @@
 </head>
 <body class="theme-blue" data-base-url={{url()}}>
 <div class="wrapper">
-    @include('theme.layout.admin.header')
-    @include('theme.layout.admin.menu')
+    @include('theme.layout.asset-manager.header')
+    @include('theme.layout.asset-manager.menu')
     <div class="content-wrapper">
         <section class="content">
             {{----------FLASH MESSAGE-----------}}
@@ -40,7 +40,7 @@
             @yield('content')
         </section>
     </div>
-    @include('theme.layout.admin.footer')
+    @include('theme.layout.asset-manager.footer')
 </div>
 <!-- bower:js -->
 <script src="{{ url('/theme/bower-components/jquery/dist/jquery.js') }}"></script>

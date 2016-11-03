@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -48,8 +49,25 @@ class AssetController extends Controller
      */
     public function index()
     {
+        $userRoleId = Auth::user()->role_id;
         $assets = Asset::get();
-        return view('pages.admin.asset.index')->with('assets',$assets);
+        switch ($userRoleId) {
+            case '1':
+                return view('pages.admin.asset.index')->with('assets',$assets);
+                break;
+            case '2':
+                return view('pages.asset-manager.asset.index')->with('assets',$assets);
+                break;
+            case '3':
+                return view('pages.admin.asset.index')->with('assets',$assets);
+                break;
+            case '4':
+                return view('pages.admin.asset.index')->with('assets',$assets);
+                break;
+            default:
+                # code...
+                break;
+        }
     }
 
     /**
@@ -59,7 +77,25 @@ class AssetController extends Controller
      */
     public function create()
     {
-        return view('pages.admin.asset.create');
+        $userRoleId = Auth::user()->role_id;
+        $assets = Asset::get();
+        switch ($userRoleId) {
+            case '1':
+                return view('pages.admin.asset.create')->with('assets',$assets);
+                break;
+            case '2':
+                return view('pages.asset-manager.asset.create')->with('assets',$assets);
+                break;
+            case '3':
+                return view('pages.admin.asset.create')->with('assets',$assets);
+                break;
+            case '4':
+                return view('pages.admin.asset.create')->with('assets',$assets);
+                break;
+            default:
+                # code...
+                break;
+        }
     }
 
     /**
