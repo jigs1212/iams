@@ -36,8 +36,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function () {
 
     Route::resource('/request','RequestController');
     Route::get('/request',array('as' => 'admin.request', 'uses' => 'RequestController@index'));
-    Route::get('/request/deactivate/{id}','RequestController@deactivateUser');
-    Route::get('/request/activate/{id}','RequestController@activateUser');
+    Route::get('/request/deactivate/{id}','RequestController@deactivateRequest');
+    Route::get('/request/activate/{id}','RequestController@activateRequest');
 
     Route::resource('/service','ServiceController');
     Route::get('/service',array('as' => 'admin.service', 'uses' => 'ServiceController@index'));
@@ -83,8 +83,8 @@ Route::group(['prefix' => 'user', 'middleware' => ['user']], function () {
 
     Route::resource('/request','RequestController');
     Route::get('/request',array('as' => 'user.request', 'uses' => 'RequestController@index'));
-    Route::get('/request/deactivate/{id}','RequestController@deactivateUser');
-    Route::get('/request/activate/{id}','RequestController@activateUser');
+    Route::get('/request/deactivate/{id}','RequestController@deactivateRequest');
+    Route::get('/request/activate/{id}','RequestController@activateRequest');
 
 });
 

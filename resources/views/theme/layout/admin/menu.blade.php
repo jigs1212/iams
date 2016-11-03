@@ -73,7 +73,7 @@
                     </ul>
                 </li>
                 <li
-                @if($titleName == 'Request Management')
+                @if($titleName == 'Request Management' || $titleName == 'View Request')
                     class="active"
                 @endif>
                     <a href="{{ url('admin/request') }}">

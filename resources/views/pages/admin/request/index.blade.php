@@ -7,7 +7,7 @@
 <!-- Main content -->
     <ol class="breadcrumb align-right">
         <li><a href="{{ route('admin.get_home') }}"><i class="material-icons">home</i> Home</a></li>
-        <li><a href="{{ route('admin.asset') }}"><i class="material-icons">layers</i> Request Management</a></li>
+        <li><a href="{{ route('admin.request') }}"><i class="material-icons">layers</i> Request Management</a></li>
     </ol>
     <div class="container-fluid">
             <!-- Horizontal Layout -->
@@ -19,35 +19,37 @@
                         </div>
                         <div class="body">
 
-                            <table class="table table-bordered table-striped table-hover" id="asset-info-table">
+                            <table class="table table-bordered table-striped table-hover" id="request-info-table">
                                 <thead>
                                     <tr>
                                         <td style="width:10%;">Sl No</td>
                                         <td>Asset Name</td>
                                         <td>Requester Name</td>
+                                        <td style="width:20%;">Purpose</td>
                                         <td>Date of Requirement</td>
-                                        {{-- <td style="width:30%;">View</td> --}}
+                                        <td style="width:20%;">View</td>
                                     </tr>
                                 </thead>
-                                {{-- @foreach($users as $key => $user)
+                                @foreach($requests as $key => $request)
                                 <tr>
                                     <td>{{ $key+1 }}</td>
-                                    <td>{{ $user->first_name }}</td>
-                                    <td>{{ $user->last_name }}</td>
-                                    <td>{{ $user->email }}</td>
+                                    <td>{{ $request->name}}</td>
+                                    <td>{{ $request->requester}}</td>
+                                    <td>{{ $request->purpose }}</td>
+                                    <td>{{ $request->date_to_be_allocated }}</td>
                                     <td>
                                         <div class="btn-group btn-group-sm">
-                                            <a href="#" class="btn btn-default btn-sm" data-toggle="tooltip" title="View"> <i class="fa fa-share"></i></a>
-                                            <a href="" sector-id="{{$sector->id}}" class="btn btn-default btn-sm sector-delete" data-toggle="tooltip" title="Delete"> <i class="fa fa-trash-o"></i></a>
-                                            @if ($sector->status == App\Sector::ACTIVE)
-                                                <a href="{{url('admin/sectors/deactivate/'.$sector->id)}}" class="btn btn-default btn-sm" data-toggle="tooltip" title="Deactivate"> <i class="fa fa-ban"></i></a>
+                                            <a href="{{url('admin/request/'.$request->id)}}" class="btn btn-default btn-sm" data-toggle="tooltip" title="View"> <i class="material-icons">forward</i></a>
+                                            <a href="" request-id="{{$request->id}}" class="btn btn-default btn-sm request-delete" data-toggle="tooltip" title="Delete"> <i class="material-icons">delete</i></a>
+                                            @if ($request->status == App\RequestAsset::ACTIVE)
+                                                <a href="{{url('admin/request/deactivate/'.$request->id)}}" class="btn btn-default btn-sm" data-toggle="tooltip" title="Deactivate"> <i class="material-icons">check_circle</i></a>
                                             @else
-                                                <a href="{{url('admin/sectors/activate/'.$sector->id)}}" class="btn btn-default btn-sm" data-toggle="tooltip" title="Activate"> <i class="fa fa-check-circle"></i></a>
+                                                <a href="{{url('admin/request/activate/'.$request->id)}}" class="btn btn-default btn-sm" data-toggle="tooltip" title="Activate"> <i class="material-icons">remove_circle</i></a>
                                             @endif
                                         </div>
                                     </td>
                                 </tr>
-                                @endforeach --}}
+                                @endforeach
                             </table>
                         </div>
                     </div>
@@ -57,21 +59,23 @@
         </div>
     </div>
 <!-- /.content -->
+@include('partials.delete-confirm-model')
 @endsection
 @push('footer.script')
 <script type="text/javascript">
     BASE_URL = $('body').data("base-url");
     $(document).ready(function() {
 
-        $('#asset-info-table').DataTable();
+        $('#request-info-table').DataTable();
 
         /**
          * Delete popup for Sector
          */
-        $('#sector-info-table').on('click', '.sector-delete', function(event) {
+        $('#request-info-table').on('click', '.request-delete', function(event) {
             event.preventDefault();
-            var sectorId = $(this).attr('sector-id');
-            var destinationPath = BASE_URL + '/admin/sectors/' + sectorId;
+            var requestId = $(this).attr('request-id');
+            var destinationPath = BASE_URL + '/admin/request/' + requestId;
+            console.log(destinationPath);
             $('#delete-confirm').attr('action', destinationPath);
             $("#delete-modal").modal('show');
         });

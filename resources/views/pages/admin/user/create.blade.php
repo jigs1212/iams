@@ -15,7 +15,7 @@
             <div class="col-xs-12">
                 <div class="card">
                     <div class="header">
-                        <h2>USER REGISTRATION<a href="{{ url('admin/user')  }}" class="btn btn-primary btn-xs" name="button" style="float:right;"><i class="material-icons">arrow_back</i> </a></h2>
+                        <h2>USER REGISTRATION<a href="{{ app('url')->previous()  }}" class="btn btn-primary btn-xs" name="button" style="float:right;"><i class="material-icons">arrow_back</i> </a></h2>
                     </div>
                     <div class="body">
                         {!! Form::open(array('url'=>'admin/user','class'=>'form-horizontal','method' => 'POST','id'=>'add-form')) !!}
