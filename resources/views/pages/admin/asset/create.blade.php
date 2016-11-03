@@ -114,7 +114,7 @@
                             <div class="col-lg-9 col-md-9 col-sm-7 col-xs-6">
                                 <div class="form-group">
                                     <div class="form-line">
-                                        {!! Form::text('amount','',array('class' => 'form-control','placeholder'=>'[Amount]','id'=>'amount'))!!}
+                                        {!! Form::number('amount','',array('class' => 'form-control','placeholder'=>'[Amount]','id'=>'amount'))!!}
                                         {!! $errors->first('amount', '<div class="text-danger">:message</div>') !!}
                                     </div>
                                 </div>
@@ -125,7 +125,7 @@
                             <div class="col-lg-9 col-md-9 col-sm-7 col-xs-6">
                                 <div class="form-group">
                                     <div class="form-line">
-                                        {!! Form::text('date_of_purchase','',array('class' => 'form-control date','placeholder'=>'Ex: 30/07/2016','id'=>'date_of_purchase'))!!}
+                                        {!! Form::text('date_of_purchase','',array('class' => 'form-control date','placeholder'=>'Ex: 2016/30/07','id'=>'date_of_purchase'))!!}
                                         {!! $errors->first('date_of_purchase', '<div class="text-danger">:message</div>') !!}
                                     </div>
                                 </div>
@@ -164,17 +164,6 @@
                                 </div>
                             </div>
                             <div class="col-lg-3 col-md-3 col-sm-5 col-xs-6 form-control-label">
-                                {!! Form::label('', 'Quantity')!!}
-                            </div>
-                            <div class="col-lg-9 col-md-9 col-sm-7 col-xs-6">
-                                <div class="form-group">
-                                    <div class="form-line">
-                                        {!! Form::text('quantity','',array('class' => 'form-control','placeholder'=>'[Quantity]','id'=>'description'))!!}
-                                        {!! $errors->first('quantity', '<div class="text-danger">:message</div>') !!}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-3 col-sm-5 col-xs-6 form-control-label">
                                 {!! Form::label('', 'Vendor Website')!!}
                             </div>
                             <div class="col-lg-9 col-md-9 col-sm-7 col-xs-6">
@@ -191,7 +180,7 @@
                             <div class="col-lg-9 col-md-9 col-sm-7 col-xs-6">
                                 <div class="form-group">
                                     <div class="form-line">
-                                        {!! Form::text('date_of_end_of_warranty','',array('class' => 'form-control date','placeholder'=>'Ex: 30/07/2016','id'=>'date_of_end_of_warranty'))!!}
+                                        {!! Form::text('date_of_end_of_warranty','',array('class' => 'form-control date','placeholder'=>'Ex: 2016/30/07','id'=>'date_of_end_of_warranty'))!!}
                                         {!! $errors->first('date_of_end_of_warranty', '<div class="text-danger">:message</div>') !!}
                                     </div>
                                 </div>

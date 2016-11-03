@@ -44,7 +44,7 @@
                     </a>
                 </li>
                 <li
-                @if($titleName == 'Add Asset' || $titleName == 'Asset Management')
+                @if($titleName == 'Add Asset' || $titleName == 'Asset Management' || $titleName == 'View Asset')
                     class="active"
                 @endif>
                     <a href="javascript:void(0);" class="menu-toggle">

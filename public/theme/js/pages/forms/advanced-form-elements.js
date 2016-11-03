@@ -11,7 +11,7 @@ $(function () {
     var $demoMaskedInput = $('.demo-masked-input');
 
     //Date
-    $('.date').inputmask('dd/mm/yyyy', { placeholder: '__/__/____' });
+    $('.date').inputmask('dd/mm/yyyy', { placeholder: '____/__/__' });
 
 /*    //Time
     $demoMaskedInput.find('.time12').inputmask('hh:mm t', { placeholder: '__:__ _m', alias: 'time12', hourFormat: '12' });

@@ -149,7 +149,25 @@ class AssetController extends Controller
      */
     public function show($id)
     {
-        //
+        $userRoleId = Auth::user()->role_id;
+        $asset = Asset::find($id);
+        switch ($userRoleId) {
+            case '1':
+                return view('pages.admin.asset.getAsset')->with('asset',$asset);
+                break;
+            case '2':
+                return view('pages.asset-manager.asset.getAsset')->with('assets',$assets);
+                break;
+            case '3':
+                return view('pages.admin.asset.getAsset')->with('assets',$assets);
+                break;
+            case '4':
+                return view('pages.admin.asset.getAsset')->with('assets',$assets);
+                break;
+            default:
+                # code...
+                break;
+        }
     }
 
     /**
