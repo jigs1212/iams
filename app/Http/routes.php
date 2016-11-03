@@ -72,6 +72,22 @@ Route::group(['prefix' => 'assetManager', 'middleware' => ['assetmanager']], fun
 
 });
 
+Route::group(['prefix' => 'user', 'middleware' => ['user']], function () {
+    Route::get('/', function(){
+        return redirect('/user/dashboard');
+    });
+    Route::get('/dashboard', array('as' => 'user.get_home', 'uses' => 'UserHomeController@getUserDashboard'));
+    Route::get('/auth/logout', array('as' => 'user.get_logout', 'uses' => 'Auth\AuthController@getLogout'));
+    Route::resource('profile', 'ProfileController@getProfile');
+    Route::get('/profile', array('as' => 'user.get_profile', 'uses' => 'ProfileController@getProfile'));
+
+    Route::resource('/request','RequestController');
+    Route::get('/request',array('as' => 'user.request', 'uses' => 'RequestController@index'));
+    Route::get('/request/deactivate/{id}','RequestController@deactivateUser');
+    Route::get('/request/activate/{id}','RequestController@activateUser');
+
+});
+
 //Error routes
 Route::get('/error/404', array('as' => 'get_404', 'uses' => 'ErrorController@get404'));
 Route::get('/error/500', array('as' => 'get_500', 'uses' => 'ErrorController@get500'));

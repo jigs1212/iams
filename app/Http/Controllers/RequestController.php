@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Auth;
+use App\Asset;
+use App\RequestAsset;
+use Validator;
+use Flash;
+use App\UserRegistration;
 
 class RequestController extends Controller
 {
@@ -17,7 +22,8 @@ class RequestController extends Controller
      */
     public function index()
     {
-        $userRoleId = Auth::user()->role_id;
+        $user = Auth::user();
+        $userRoleId = $user->role_id;
         switch ($userRoleId) {
             case '1':
                 return view('pages.admin.request.index');
@@ -29,7 +35,12 @@ class RequestController extends Controller
                 return view('pages.admin.request.index');
                 break;
             case '4':
-                return view('pages.admin.request.index');
+                $requests = RequestAsset::join('assets as asset', 'asset.id', '=', 'requests.asset_id')
+                            ->where('requester_user_id',$user->id)
+                            ->select('requests.id','requests.date_to_be_allocated','requests.purpose','asset.name')
+                            ->get();
+
+                return view('pages.user.request.index')->with('requests',$requests)->with('user',$user);
                 break;
             default:
                 # code...
@@ -44,7 +55,25 @@ class RequestController extends Controller
      */
     public function create()
     {
-        //
+        $userRoleId = Auth::user()->role_id;
+        $assets = Asset::lists('name','id')->toArray();
+        switch ($userRoleId) {
+            case '1':
+                return view('pages.admin.request.create')->with('assets',$assets);
+                break;
+            case '2':
+                return view('pages.asset-manager.request.create')->with('assets',$assets);
+                break;
+            case '3':
+                return view('pages.dept-manager.request.create')->with('assets',$assets);
+                break;
+            case '4':
+                return view('pages.user.request.create')->with('assets',$assets);
+                break;
+            default:
+                # code...
+                break;
+        }
     }
 
     /**
@@ -55,7 +84,41 @@ class RequestController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+        $userId = Auth::user()->id;
+        $requestData = array(
+            'asset_id' => $input['asset_id'],
+            'purpose' => $input['purpose'],
+            'date_to_be_allocated' => $input['date_to_be_allocated'],
+            'time_to_be_allocated' => $input['time_to_be_allocated'],
+            'date_of_return' => $input['date_of_return'],
+            'time_of_return' => $input['time_of_return']
+        );
+        // dd($requestData);
+        $rule = [
+            'asset_id' => 'required',
+            'purpose' => 'required',
+            'date_to_be_allocated' => 'required',
+            'time_to_be_allocated' => 'required',
+            'date_of_return' => 'required',
+            'time_of_return' => 'required'
+        ];
+
+        $validator = validator::make($requestData, $rule);
+        if ($validator->passes()) {
+
+            //New Request object
+            $request_data = new RequestAsset();
+            $request_data->fill($input);
+            $request_data->requester_user_id = $userId;
+            $request_data->status = RequestAsset::ACTIVE;
+            $request_data->save();
+            Flash::success('User Successfully Added..');
+            return redirect()->back();
+        }else{
+            Flash::error('Validation Failed');
+            return redirect()->back()->withInput()->withErrors($validator->messages());
+        }
     }
 
     /**

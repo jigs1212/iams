@@ -35,7 +35,7 @@ class Admin
         if ($request->ajax()) {
                 return response('Unauthorized.', 401);
             } else {
-              if ($this->auth->check()&&$this->auth->user()->role_id != Roles::ROLE_ADMIN) {
+              if ($this->auth->check() && $this->auth->user()->role_id != Roles::ROLE_ADMIN) {
                 return redirect('admin/dashboard');
             }
                 return redirect('auth/login');

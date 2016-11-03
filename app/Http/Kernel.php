@@ -31,5 +31,6 @@ class Kernel extends HttpKernel
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'admin' => \App\Http\Middleware\Admin::class,
         'assetmanager' => \App\Http\Middleware\AssetManager::class,
+        'user' => \App\Http\Middleware\User::class,
     ];
 }

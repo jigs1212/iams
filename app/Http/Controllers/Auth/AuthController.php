@@ -54,7 +54,7 @@ class AuthController extends Controller
         ]);
 
         $credentials = $request->only('email', 'password');
-        $credentials['role_id'] = Roles::ROLE_ADMIN;
+        // $credentials['role_id'] = Roles::ROLE_ADMIN;
         $user = User::where('email', $credentials['email'])
             ->first();
         if($user->role_id == Roles::ROLE_ADMIN){
@@ -77,12 +77,11 @@ class AuthController extends Controller
                 Auth::login($user);
                 return redirect()->intended(route('user.get_home'));
             }
+        }else{
+            return redirect()
+                    ->back()
+                    ->withInput();
         }
-        return redirect('admin/auth/login')
-            ->withInput($request->only('email', 'remember'))
-            ->withErrors([
-                'email' => $this->getFailedLoginMessage(),
-            ]);
     }
 
 

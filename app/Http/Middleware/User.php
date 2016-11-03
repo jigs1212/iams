@@ -4,7 +4,7 @@ use Closure;
 use Illuminate\Contracts\Auth\Guard;
 use App\Common\Roles;
 
-class AssetManager
+class User
 {
     /**
      * The Guard implementation.
@@ -31,12 +31,12 @@ class AssetManager
      */
      public function handle($request, Closure $next)
      {
-        if ($this->auth->guest() || (!$this->auth->guest() && $this->auth->user()->role_id != Roles::ROLE_ASSET_MANAGER)) {
+        if ($this->auth->guest() || (!$this->auth->guest() && $this->auth->user()->role_id != Roles::ROLE_USER)) {
         if ($request->ajax()) {
                 return response('Unauthorized.', 401);
             } else {
-              if ($this->auth->check() && $this->auth->user()->role_id != Roles::ROLE_ASSET_MANAGER) {
-                return redirect('assetManager/dashboard');
+              if ($this->auth->check() && $this->auth->user()->role_id != Roles::ROLE_USER) {
+                return redirect('user/dashboard');
             }
                 return redirect('auth/login');
             }

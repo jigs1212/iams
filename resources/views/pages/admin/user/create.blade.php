@@ -15,15 +15,15 @@
             <div class="col-xs-12">
                 <div class="card">
                     <div class="header">
-                        <h2>USER REGISTRATION<a href="{{ app('url')->previous() }}" class="btn btn-primary btn-xs" name="button" style="float:right;"><i class="material-icons">arrow_back</i> </a></h2>
+                        <h2>USER REGISTRATION<a href="{{ url('admin/user')  }}" class="btn btn-primary btn-xs" name="button" style="float:right;"><i class="material-icons">arrow_back</i> </a></h2>
                     </div>
                     <div class="body">
                         {!! Form::open(array('url'=>'admin/user','class'=>'form-horizontal','method' => 'POST','id'=>'add-form')) !!}
                             <div class="row clearfix">
-                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                <div class="col-md-2 col-sm-4 col-xs-5 form-control-label">
                                     <label for="email_address_2">First Name</label>
                                 </div>
-                                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                <div class="col-md-10 col-sm-8 col-xs-7">
                                     <div class="form-group">
                                         <div class="form-line">
                                             <input type="text" name="first_name" class="form-control" placeholder="First Name">
@@ -32,10 +32,10 @@
                                 </div>
                             </div>
                             <div class="row clearfix">
-                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                <div class="col-md-2 col-sm-4 col-xs-5 form-control-label">
                                     <label for="email_address_2">Last Name</label>
                                 </div>
-                                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                <div class="col-md-10 col-sm-8 col-xs-7">
                                     <div class="form-group">
                                         <div class="form-line">
                                             <input type="text" name="last_name" class="form-control" placeholder="Last Name">
@@ -44,10 +44,10 @@
                                 </div>
                             </div>
                             <div class="row clearfix">
-                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                <div class="col-md-2 col-sm-4 col-xs-5 form-control-label">
                                     <label for="email_address_2">User Name</label>
                                 </div>
-                                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                <div class="col-md-10 col-sm-8 col-xs-7">
                                     <div class="form-group">
                                         <div class="form-line">
                                             <input type="text" name="user_name" class="form-control" placeholder="User Name">
@@ -56,10 +56,10 @@
                                 </div>
                             </div>
                             <div class="row clearfix">
-                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                <div class="col-md-2 col-sm-4 col-xs-5 form-control-label">
                                     <label for="email_address_2">E-mail</label>
                                 </div>
-                                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                <div class="col-md-10 col-sm-8 col-xs-7">
                                     <div class="form-group">
                                         <div class="form-line">
                                             <input type="text" name="email" class="form-control" placeholder="E-Mail">
@@ -68,10 +68,10 @@
                                 </div>
                             </div>
                             <div class="row clearfix">
-                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                <div class="col-md-2 col-sm-4 col-xs-5 form-control-label">
                                     <label for="email_address_2">Role Name</label>
                                 </div>
-                                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                <div class="col-md-10 col-sm-8 col-xs-7">
                                     <div class="form-group">
                                         <div class="form-line">
                                             <select name="role_id" class="form-control">
@@ -86,10 +86,10 @@
                                 </div>
                             </div>
                             <div class="row clearfix">
-                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                <div class="col-md-2 col-sm-4 col-xs-5 form-control-label">
                                     <label for="email_address_2">Department Name</label>
                                 </div>
-                                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                <div class="col-md-10 col-sm-8 col-xs-7">
                                     <div class="form-group">
                                         <div class="form-line">
                                             {!! Form::select('department_id',array('0' => '[Please select Sector]')+$departments,'',array('class'=>'form-control','id'=>'type'))!!}
@@ -98,10 +98,10 @@
                                 </div>
                             </div>
                             <div class="row clearfix">
-                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                <div class="col-md-2 col-sm-4 col-xs-5 form-control-label">
                                     <label for="password_2">Password</label>
                                 </div>
-                                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                <div class="col-md-10 col-sm-8 col-xs-7">
                                     <div class="form-group">
                                         <div class="form-line">
                                             <input type="password" name="password" class="form-control" placeholder="Enter your password">
