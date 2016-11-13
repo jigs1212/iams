@@ -59,31 +59,50 @@ class AuthController extends Controller
         $user = User::where('email', $credentials['email'])
             ->first();
         if (!$user) {
-            Flash::error('User Not Found');
+            Flash::error('Incorrect Details');
             return redirect()
                     ->back()
                     ->withInput();
-
         }else if($user->role_id == Roles::ROLE_ADMIN){
             if ($user && Hash::check($credentials['password'], $user->password)) {
                 Auth::login($user);
                 return redirect()->intended(route('admin.get_home'));
-            }
+            }else{
+                Flash::error('Incorrect Details');
+                return redirect()
+                        ->back()
+                        ->withInput();
+                    }
         } else if($user->role_id == Roles::ROLE_ASSET_MANAGER){
             if ($user && Hash::check($credentials['password'], $user->password)) {
                 Auth::login($user);
                 return redirect()->intended(route('asset_manager.get_home'));
-            }
+            }else{
+                Flash::error('Incorrect Details');
+                return redirect()
+                        ->back()
+                        ->withInput();
+                    }
         } else if($user->role_id == Roles::ROLE_DEPT_MANAGER){
             if ($user && Hash::check($credentials['password'], $user->password)) {
                 Auth::login($user);
                 return redirect()->intended(route('dept_manager.get_home'));
-            }
+            }else{
+                Flash::error('Incorrect Details');
+                return redirect()
+                        ->back()
+                        ->withInput();
+                    }
         } else if($user->role_id == Roles::ROLE_USER){
             if ($user && Hash::check($credentials['password'], $user->password)) {
                 Auth::login($user);
                 return redirect()->intended(route('user.get_home'));
-            }
+            }else{
+                Flash::error('User Not Found');
+                return redirect()
+                        ->back()
+                        ->withInput();
+                    }
         }else{
             return redirect()
                     ->back()

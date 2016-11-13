@@ -138,10 +138,10 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-3 col-sm-5 col-xs-6 form-control-label">
+                                    <div class="col-md-3 col-xs-6 form-control-label">
                                         {!! Form::label('', 'Date of Purchase')!!}
                                     </div>
-                                    <div class="col-md-2">
+                                    <div class="col-md-2 col-xs-6">
                                         <div class="form-group">
                                             <div class="form-line">
                                                 {!! Form::date('date_of_purchase','',array('class' => 'form-control date padding-0','placeholder'=>'Ex: 2016/30/07','id'=>'date_of_purchase'))!!}

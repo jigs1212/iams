@@ -12,9 +12,71 @@ use App\User;
 use App\UserRegistration;
 use Validator;
 use Flash;
+use Response;
 
 class ProfileController extends Controller
 {
+    public function changePasswordView()
+    {
+        $user = Auth::user();
+        $userId = $user->id;
+        $userRoleId = $user->role_id;
+        switch ($userRoleId) {
+            case '1':
+                return view('pages.admin.changePassword');
+                break;
+            case '2':
+                return view('pages.asset-manager.changePassword');
+                break;
+            case '3':
+                return view('pages.admin.changePassword');
+                break;
+            case '4':
+                return view('pages.admin.changePassword');
+                break;
+            default:
+                # code...
+                break;
+        }
+    }
+    public function changePassword(Request $request)
+    {
+        $user = Auth::user();
+        $userEmail = $user->email;
+        $input = $request->all();
+        $passwordObj = array(
+            'email' => $userEmail,
+            'current_password' => $input['current_password'],
+            'password' => $input['password'],
+            'password_confirmation' => $input['password_confirmation']
+        );
+        $rule = array(
+            'password' => 'Required|confirmed|min:6'
+        );
+        $validator = Validator::make($passwordObj, $rule);
+
+        if ($validator->passes()) {
+
+            if (!Auth::attempt(['email' => $passwordObj['email'], 'password' => $passwordObj['current_password']])) {
+                Flash::error('Information MissMatch');
+                return redirect()->back()->withInput();
+            }
+            if (Auth::attempt(['email' => $passwordObj['email'], 'password' => $passwordObj['password']])) {
+                Flash::error('Information Missmatch');
+                return redirect()->back()->withInput();
+            }
+
+            $user->password = bcrypt($passwordObj['password']);
+            $user->save();
+
+            Flash::success('Password Changed');
+            return redirect()->back();
+        } else {
+            Flash::error('Information Missmatch');
+            return redirect()->back()->withInput()->withErrors($validator->messages());
+        }
+    }
+
     public function getProfile()
     {
         $user = Auth::user();

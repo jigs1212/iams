@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Asset;
+use App\RequestAsset;
 use App\User;
 use DB;
 
@@ -18,7 +19,7 @@ Class AdminHomeController extends Controller
                     ->where('status','=', '1' )
                     ->get();
         $asset_count = $asset[0]->asset_count;
-        $request = User::select(DB::raw('count(*) as request_count'))
+        $request = RequestAsset::select(DB::raw('count(*) as request_count'))
                     ->where('status','=','1')
                     ->get();
         $request_count = $request[0]->request_count;

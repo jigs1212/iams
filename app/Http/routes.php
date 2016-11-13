@@ -23,6 +23,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function () {
     Route::get('/auth/logout', array('as' => 'admin.get_logout', 'uses' => 'Auth\AuthController@getLogout'));
     Route::resource('profile', 'ProfileController');
     Route::get('/profile', array('as' => 'admin.get_profile', 'uses' => 'ProfileController@getProfile'));
+    Route::get('/password', array('as' => 'admin.change_password', 'uses' => 'ProfileController@changePasswordView'));
+    Route::post('/password', array('as' => 'admin.change_password', 'uses' => 'ProfileController@changePassword'));
 
     Route::resource('/user','UserController');
     Route::get('/user',array('as' => 'admin.user', 'uses' => 'UserController@index'));

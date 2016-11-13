@@ -15,6 +15,8 @@
                     <ul class="dropdown-menu pull-right">
                         <li><a href="{{route("admin.get_profile")}}"><i class="material-icons">person</i>Profile</a></li>
                         <li role="seperator" class="divider"></li>
+                        <li><a href="{{route("admin.change_password")}}"><i class="material-icons">lock_outline</i>Change Password</a></li>
+                        <li role="seperator" class="divider"></li>
                         <li><a href="{{route("admin.get_logout")}}"><i class="material-icons">input</i>Sign Out</a></li>
                     </ul>
                 </div>
