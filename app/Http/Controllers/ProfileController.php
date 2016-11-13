@@ -10,6 +10,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\UserRegistration;
+use Validator;
+use Flash;
 
 class ProfileController extends Controller
 {
@@ -20,8 +22,9 @@ class ProfileController extends Controller
         $userRoleId = $user->role_id;
         $profile = User::join('user_registrations', 'user_id', '=', 'users.id')
             ->where('users.id', $userId)
-            ->select('users.id', 'user_name', 'email', 'role_id', 'first_name', 'last_name', 'department_id')
+            ->select('users.id', 'user_name', 'email', 'role_id', 'first_name', 'last_name', 'department_id','city','state','country','birthday','phone_off','extn', 'mobile_no')
             ->first();
+            // dd($profile);
         switch ($userRoleId) {
             case '1':
                 return view('pages.admin.getProfile')->with('profile',$profile);
@@ -102,7 +105,24 @@ class ProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $input = $request->all();
+        $validator = Validator::make($input,UserRegistration::$rule_update);
+        if ($validator->passes()) {
+            $userReg = UserRegistration::where('user_id',$id)->first();
+            $userReg->city = $input['city'];
+            $userReg->state = $input['state'];
+            $userReg->country = $input['country'];
+            $userReg->birthday = $input['bday'];
+            $userReg->phone_off = $input['ph_office'];
+            $userReg->extn = $input['extn'];
+            $userReg->mobile_no = $input['mobile'];
+            $userReg->save();
+            Flash::Success('User Profile Successfully Added');
+            return redirect()->back();
+        } else {
+            Flash::error('Validation Failed');
+            return redirect()->back()->withInput()->withErrors($validator->messages());
+        }
     }
 
     /**

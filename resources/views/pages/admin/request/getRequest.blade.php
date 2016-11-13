@@ -5,7 +5,7 @@
 @endsection
 @section('content')
 <!-- Main content -->
-    <ol class="breadcrumb breadcrumb-bg-light-blue align-right">
+    <ol class="breadcrumb align-right">
         <li><a href="{{ route('admin.get_home') }}"><i class="material-icons">home</i> Home</a></li>
         <li><a href="{{ route('admin.user') }}"><i class="material-icons">layers</i> Request Management</a></li>
     </ol>

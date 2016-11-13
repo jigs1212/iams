@@ -15,7 +15,7 @@
                 <div class="col-xs-12">
                     <div class="card">
                         <div class="header">
-                            <h2>Asset MANAGEMENT<a href="{{ url('admin/asset/create') }}" class="btn btn-xs btn-primary" name="button" style="float:right;"><i class="material-icons">add_to_queue</i></a></h2>
+                            <h2>Asset MANAGEMENT<a href="{{ url('admin/asset/create') }}" class="btn btn-xs btn-primary" name="button" style="float:right;"><i class="material-icons">add_to_queue</i> Add Asset</a></h2>
                         </div>
                         <div class="body">
 
@@ -26,7 +26,7 @@
                                         <td>Asset Name</td>
                                         <td>Vendor Name</td>
                                         <td>Quantity</td>
-                                        <td style="width:30%;">View</td>
+                                        <td style="width:20%;">View</td>
                                     </tr>
                                 </thead>
                                 @foreach($assets as $key => $asset)

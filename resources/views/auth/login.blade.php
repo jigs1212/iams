@@ -31,7 +31,7 @@
     {{-------FLASH MESSAGE ENDS---------}}
     <div class="login-box">
         <div class="logo">
-            <a href="javascript:void(0);">Admin<b>IAMS</b></a>
+            <a href="javascript:void(0);"><b>IAMS</b></a>
             <small>Intelligent Asset Management System</small>
         </div>
         <div class="card">

@@ -84,7 +84,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
+                                {{-- <div class="row">
                                     <div class="col-md-3 col-sm-5 col-xs-6 form-control-label">
                                         {!! Form::label('', 'Type')!!}
                                     </div>
@@ -97,7 +97,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="row">
                                     <div class="col-md-3 col-sm-5 col-xs-6 form-control-label">
                                         {!! Form::label('', 'Supplier Name')!!}

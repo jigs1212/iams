@@ -15,7 +15,7 @@
                 <div class="col-xs-12">
                     <div class="card">
                         <div class="header">
-                            <h2>USER MANAGEMENT<a href="{{ url('admin/user/create') }}" class="btn btn-xs btn-primary" name="button" style="float:right;"><i class="material-icons">person_add</i></a></h2>
+                            <h2>USER MANAGEMENT<a href="{{ url('admin/user/create') }}" class="btn btn-xs btn-primary" name="button" style="float:right;"><i class="material-icons">person_add</i> Add User</a></h2>
 
                         </div>
                         <div class="body">

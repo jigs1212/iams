@@ -5,7 +5,7 @@
 @endsection
 @section('content')
 <!-- Main content -->
-    <ol class="breadcrumb breadcrumb-bg-light-blue align-right">
+    <ol class="breadcrumb align-right">
         <li><a href="{{ route('admin.get_home') }}"><i class="material-icons">home</i> Home</a></li>
         <li><a href="{{ route('admin.asset') }}"><i class="material-icons">devices_other</i> asset Management</a></li>
     </ol>
@@ -14,7 +14,7 @@
             <div class="card">
                 <div class="header">
                     <h2>
-                        User Profile
+                        Asset Profile
                         <small></small>
                     </h2>
                 </div>

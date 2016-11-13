@@ -15,6 +15,10 @@ use App\UserRegistration;
 
 class RequestController extends Controller
 {
+    public function checkForNewRequest()
+    {
+        
+    }
     public function deactivateRequest($id)
     {
         $request = RequestAsset::find($id);

@@ -21,7 +21,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function () {
     });
     Route::get('/dashboard', array('as' => 'admin.get_home', 'uses' => 'AdminHomeController@getAdminDashboard'));
     Route::get('/auth/logout', array('as' => 'admin.get_logout', 'uses' => 'Auth\AuthController@getLogout'));
-    Route::resource('profile', 'ProfileController@getProfile');
+    Route::resource('profile', 'ProfileController');
     Route::get('/profile', array('as' => 'admin.get_profile', 'uses' => 'ProfileController@getProfile'));
 
     Route::resource('/user','UserController');

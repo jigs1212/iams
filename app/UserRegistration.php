@@ -24,8 +24,12 @@ class UserRegistration extends Model
     ];
 
     public static $rule_update = [
-        'first_name' => 'required',
-        'last_name' => 'required',
-        'department_id' => 'required'
+        'city' => 'required',
+        'state' => 'required',
+        'country' => 'required',
+        'bday' => 'required',
+        'ph_office' => 'required|integer',
+        'extn' => 'required|integer',
+        'mobile' => 'required|integer'
     ];
 }

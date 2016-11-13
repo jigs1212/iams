@@ -37,6 +37,7 @@
                 </div>
             </div>
             {{-------FLASH MESSAGE ENDS---------}}
+
             @yield('content')
         </section>
     </div>
@@ -51,6 +52,7 @@
 {!! HTML::script('/theme/plugins/jquery-datatable/jquery.dataTables.js') !!}
 {!! HTML::script('/theme/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js') !!}
 {!! HTML::script('/theme/plugins/bootstrap-select/js/bootstrap-select.js') !!}
+{!! HTML::script('/theme/plugins/bootstrap-notify/bootstrap-notify.js') !!}
 {!! HTML::script('/theme/plugins/node-waves/waves.js') !!}
 {!! HTML::script('/theme/plugins/jquery-countto/jquery.countTo.js')!!}
 {{-- {!! HTML::script('/theme/plugins/raphael/raphael.min.js') !!} --}}
@@ -70,8 +72,28 @@
 {!! HTML::script('/theme/js/admin.js') !!}
 {!! HTML::script('/theme/js/pages/index.js') !!}
 {!! HTML::script('/theme/js/pages/forms/advanced-form-elements.js') !!}
+{!! HTML::script('/theme/js/pages/ui/notifications.js') !!}
 {{-- {!! HTML::script('/theme/js/demo.js') !!} --}}
 {!! HTML::script('/theme/js/jquery-migrate-1.4.1.min.js') !!}
+<script type="text/javascript">
+    BASE_URL = $('body').data("base-url");
+    $(document).ready(function() {
+
+        /**
+         * Check for new  notifications
+         */
+        var urlRequest = BASE_URL + '/admin/requests';
+        $.ajax({
+            method: "GET",
+            url: urlRequest,
+            data: { name: "John", location: "Boston" }
+        })
+        .done(function( msg ) {
+            alert( "Data Saved: " + msg );
+        });
+
+});
+</script>
 @stack('footer.script')
 </body>
 </html>
