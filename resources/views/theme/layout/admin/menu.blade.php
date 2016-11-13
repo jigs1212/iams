@@ -47,30 +47,10 @@
                 @if($titleName == 'Add Asset' || $titleName == 'Asset Management' || $titleName == 'View Asset')
                     class="active"
                 @endif>
-                    <a href="javascript:void(0);" class="menu-toggle">
+                    <a href="{{ url('admin/asset') }}">
                         <i class="material-icons">devices_other</i>
                         <span>Asset Management</span>
                     </a>
-                    <ul class="ml-menu">
-                        <li
-                        @if($titleName == 'Add Asset')
-                            class="active"
-                        @endif>
-                            <a href="{{ url('admin/asset/create') }}">
-                                <i class="material-icons">library_add</i>
-                                <span>Add Asset</span>
-                            </a>
-                        </li>
-                        <li
-                        @if($titleName == 'Asset Management')
-                            class="active"
-                        @endif>
-                            <a href="{{ url('admin/asset') }}">
-                                <i class="material-icons">settings_input_antenna</i>
-                                <span>Manage Asset</span>
-                            </a>
-                        </li>
-                    </ul>
                 </li>
                 <li
                 @if($titleName == 'Request Management' || $titleName == 'View Request')

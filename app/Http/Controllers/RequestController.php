@@ -68,9 +68,8 @@ class RequestController extends Controller
             case '4':
                 $requests = RequestAsset::join('assets as asset', 'asset.id', '=', 'requests.asset_id')
                             ->where('requester_user_id',$user->id)
-                            ->select('requests.id','requests.date_to_be_allocated','requests.purpose','asset.name')
+                            ->select('requests.id','requests.date_to_be_allocated','requests.purpose','asset.name','requests.status as status')
                             ->get();
-
                 return view('pages.user.request.index')->with('requests',$requests)->with('user',$user);
                 break;
             default:
@@ -142,7 +141,7 @@ class RequestController extends Controller
             $request_data = new RequestAsset();
             $request_data->fill($input);
             $request_data->requester_user_id = $userId;
-            $request_data->status = RequestAsset::ACTIVE;
+            $request_data->status = RequestAsset::PENDING;
             $request_data->save();
             Flash::success('User Successfully Added..');
             return redirect()->back();

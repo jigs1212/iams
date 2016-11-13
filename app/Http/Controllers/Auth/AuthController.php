@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Auth;
 use Input;
 use Hash;
+use Flash;
 use Lang;
 use App\User;
 
@@ -57,7 +58,13 @@ class AuthController extends Controller
         // $credentials['role_id'] = Roles::ROLE_ADMIN;
         $user = User::where('email', $credentials['email'])
             ->first();
-        if($user->role_id == Roles::ROLE_ADMIN){
+        if (!$user) {
+            Flash::error('User Not Found');
+            return redirect()
+                    ->back()
+                    ->withInput();
+
+        }else if($user->role_id == Roles::ROLE_ADMIN){
             if ($user && Hash::check($credentials['password'], $user->password)) {
                 Auth::login($user);
                 return redirect()->intended(route('admin.get_home'));

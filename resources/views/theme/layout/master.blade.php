@@ -25,13 +25,13 @@
     {{-- @include('theme.layout.admin.menu') --}}
     <div class="content-wrapper">
         {{----------FLASH MESSAGE-----------}}
-        {{-- <div id="flash-message-container" class="flat">
+        <div id="flash-message-container" class="flat">
             <div class="row">
                 <div class="col-sm-12">
                     @include('vendor.flash.message')
                 </div>
             </div>
-        </div> --}}
+        </div>
         {{-------FLASH MESSAGE ENDS---------}}
         @yield('content')
     </div>

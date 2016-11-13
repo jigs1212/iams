@@ -172,7 +172,27 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $input = $request->all();
+        dd($input);
+        $validator = Validator::make($input,UserRegistration::$rule);
+        if ($validator->passes()) {
+            $questionnaire = Questionnaire::find($id);
+            $questionnaire->fill($input);
+            $question = isset($input['question']) ? $input['question'] : '';
+            foreach ($question as $key => $item) {
+                if (!$item) {
+                    unset($question[$key]);
+                }
+            }
+            $questionnaire->questions = json_encode($question);
+            $questionnaire->status = Questionnaire::ACTIVE;
+            $questionnaire->save();
+            Flash::Success('Questionnaire Successfully Added');
+            return redirect()->back();
+        } else {
+            Flash::error('Validation Failed');
+            return redirect()->back()->withInput()->withErrors($validator->messages());
+        }
     }
 
     /**

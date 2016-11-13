@@ -15,7 +15,7 @@
                 <div class="col-xs-12">
                     <div class="card">
                         <div class="header">
-                            <h2>Asset MANAGEMENT</h2>
+                            <h2>Asset MANAGEMENT<a href="{{ url('admin/asset/create') }}" class="btn btn-xs btn-primary" name="button" style="float:right;"><i class="material-icons">add_to_queue</i></a></h2>
                         </div>
                         <div class="body">
 
@@ -57,6 +57,7 @@
         </div>
     </div>
 <!-- /.content -->
+@include('partials.delete-confirm-model')
 @endsection
 @push('footer.script')
 <script type="text/javascript">
@@ -66,12 +67,12 @@
         $('#asset-info-table').DataTable();
 
         /**
-         * Delete popup for Sector
+         * Delete popup for asset
          */
-        $('#sector-info-table').on('click', '.sector-delete', function(event) {
+        $('#asset-info-table').on('click', '.asset-delete', function(event) {
             event.preventDefault();
-            var sectorId = $(this).attr('sector-id');
-            var destinationPath = BASE_URL + '/admin/sectors/' + sectorId;
+            var assetId = $(this).attr('asset-id');
+            var destinationPath = BASE_URL + '/admin/asset/' + assetId;
             $('#delete-confirm').attr('action', destinationPath);
             $("#delete-modal").modal('show');
         });

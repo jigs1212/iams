@@ -26,6 +26,7 @@
                                         <td>Asset Name</td>
                                         <td>Purpose</td>
                                         <td>Date of Requirement</td>
+                                        <td>status</td>
                                         {{-- <td style="width:30%;">View</td> --}}
                                     </tr>
                                 </thead>
@@ -35,6 +36,16 @@
                                     <td>{{ $request->name }}</td>
                                     <td>{{ $request->purpose }}</td>
                                     <td>{{ $request->date_to_be_allocated }}</td>
+                                    <td>
+                                        {{ $request->status }}
+                                        {{-- @if ($request->status == App\RequestAsset::ACTIVE)
+                                            Approved
+                                        @elseif ($request->status == App\RequestAsset::DEACTIVE)
+                                            Declined
+                                        @else
+                                            Pending
+                                        @endif --}}
+                                    </td>
                                     {{-- <td>
                                         <div class="btn-group btn-group-sm">
                                             <a href="#" class="btn btn-default btn-sm" data-toggle="tooltip" title="View"> <i class="fa fa-share"></i></a>

@@ -107,7 +107,7 @@ class AssetController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
-
+        $userId = Auth::user()->id;
         $validator = validator::make($input, Asset::$rule);
         if ($validator->passes()) {
             $assetData = array(
@@ -126,11 +126,13 @@ class AssetController extends Controller
                 'customer_care_email' => $input['customer_care_email'],
                 'vendor_website_support' => $input['vendor_website_support'],
                 'date_of_end_of_warranty' => $input['date_of_end_of_warranty'],
-                'status' => true,
+                'status' => true
             );
 
             $asset = new Asset();
             $asset->fill($assetData);
+            $asset->added_by_user_id = $userId;
+            $asset->updated_by_user_id = $userId;
             $asset->save();
             Flash::success('Asset Successfully Added..');
             return redirect()->back();
@@ -201,6 +203,14 @@ class AssetController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $asset = Asset::find($id);
+        if ($asset) {
+            $asset->delete();
+            Flash::success('Asset Successfully Deleted');
+            return redirect()->back();
+        } else {
+            Flash::error('Whoops! Something Went Wrong');
+            return redirect()->back();
+        }
     }
 }

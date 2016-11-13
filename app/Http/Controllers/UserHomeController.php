@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Asset;
+use App\RequestAsset;
+use Auth;
 use App\User;
 use DB;
 
@@ -14,6 +15,7 @@ Class UserHomeController extends Controller
      */
     public function getUserDashboard()
     {
+        $userId = Auth::user()->id;
         // $asset = Asset::select(DB::raw('count(*) as asset_count'))
         //             ->where('status','=', '1' )
         //             ->get();
@@ -22,7 +24,12 @@ Class UserHomeController extends Controller
         //             ->where('status','=','1')
         //             ->get();
         // $user_count = $user[0]->user_count;
-        return View('pages.user.dashboard');
+        $request = RequestAsset::select(DB::raw('count(*) as request_count'))
+                    ->where('requester_user_id',$userId)
+                    ->get();
+        $request_count = $request[0]->request_count;
+        return View('pages.user.dashboard')
+            ->with('request_count',$request_count);
             // ->with('asset_count',$asset_count)
             // ->with('user_count',$user_count);
     }

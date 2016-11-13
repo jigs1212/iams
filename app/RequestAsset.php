@@ -9,6 +9,7 @@ class RequestAsset extends Model
 {
     use SoftDeletes;
 
+    CONST PENDING = 2;
     CONST ACTIVE = 1;
     CONST DEACTIVE = 0;
 

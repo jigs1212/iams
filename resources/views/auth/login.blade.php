@@ -20,6 +20,15 @@
     @yield('after-styles-end')
 </head>
 <body class="login-page" data-base-url={{url()}}>
+    {{----------FLASH MESSAGE-----------}}
+    <div id="flash-message-container" class="flat">
+        <div class="row">
+            <div class="col-sm-12">
+                @include('vendor.flash.message')
+            </div>
+        </div>
+    </div>
+    {{-------FLASH MESSAGE ENDS---------}}
     <div class="login-box">
         <div class="logo">
             <a href="javascript:void(0);">Admin<b>IAMS</b></a>

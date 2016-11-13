@@ -18,12 +18,17 @@ Class AdminHomeController extends Controller
                     ->where('status','=', '1' )
                     ->get();
         $asset_count = $asset[0]->asset_count;
+        $request = User::select(DB::raw('count(*) as request_count'))
+                    ->where('status','=','1')
+                    ->get();
+        $request_count = $request[0]->request_count;
         $user = User::select(DB::raw('count(*) as user_count'))
                     ->where('status','=','1')
                     ->get();
         $user_count = $user[0]->user_count;
         return View('pages.admin.dashboard')
             ->with('asset_count',$asset_count)
+            ->with('request_count',$request_count)
             ->with('user_count',$user_count);
     }
 
