@@ -13,8 +13,8 @@ use Flash;
 use App\User;
 use App\UserRegistration;
 use App\Department;
-use App\Jobs\SendEmailToUsers;
-use Illuminate\Foundation\Bus\DispatchesJobs;
+// use App\Jobs\SendEmailToUsers;
+// use Illuminate\Foundation\Bus\DispatchesJobs;
 
 
 class UserController extends Controller
@@ -120,7 +120,7 @@ class UserController extends Controller
                     $userReg = new UserRegistration();
                     $userReg->fill($userRegData);
                     $userReg->save();
-                    
+
                 }
             } catch (\Exception $e) {
                 DB::rollBack();
@@ -131,8 +131,8 @@ class UserController extends Controller
             // data is valid and working.
             // Commit the queries!
             DB::commit();
-            $job = (new SendEmailToUsers($contact_us_messages))->onQueue('emails');
-            $this->dispatch($job);
+            // $job = (new SendEmailToUsers($contact_us_messages))->onQueue('emails');
+            // $this->dispatch($job);
             return redirect()->back();
             Flash::success('User Successfully Added..');
             return redirect()->back();
